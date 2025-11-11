@@ -1,0 +1,86 @@
+# ============================================
+# DOCKER COMPOSE - TAPIPIEL WEBSITE
+# ============================================
+# Este archivo orquesta los contenedores Docker
+# para desarrollo y producción del sitio Tapipiel
+# ============================================
+
+version: '3.8'
+
+services:
+  # ==========================================
+  # SERVICIO DE DESARROLLO
+  # ==========================================
+  # Uso: docker-compose up dev
+  # Acceso: http://localhost:5173
+  # ==========================================
+  dev:
+    container_name: tapipiel-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development  # Usa la etapa "development" del Dockerfile
+    
+    # Mapeo de puertos: HOST:CONTAINER
+    # Puerto 5173 del contenedor → Puerto 5173 de tu máquina
+    ports:
+      - "5173:5173"
+    
+    # Volúmenes: sincroniza archivos entre tu máquina y el contenedor
+    volumes:
+      # Monta todo el código fuente (hot reload automático)
+      - ./:/app
+      
+      # Evita que node_modules del host sobreescriba el del contenedor
+      # (esto mejora el rendimiento y evita conflictos de plataforma)
+      - /app/node_modules
+    
+    # Variables de entorno para desarrollo
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:5173
+    
+    # Reinicia el contenedor automáticamente si falla
+    restart: unless-stopped
+    
+    # Comando personalizado (sobrescribe el CMD del Dockerfile)
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    
+    # Redes (opcional, para comunicación entre servicios)
+    networks:
+      - tapipiel-network
+
+  # ==========================================
+  # SERVICIO DE PRODUCCIÓN
+  # ==========================================
+  # Uso: docker-compose up prod
+  # Acceso: http://localhost:8080
+  # ==========================================
+  prod:
+    container_name: tapipiel-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production  # Usa la etapa "production" del Dockerfile
+    
+    # Mapeo de puertos: HOST:CONTAINER
+    # Puerto 80 del contenedor → Puerto 8080 de tu máquina
+    ports:
+      - "8080:80"
+    
+    # Variables de entorno para producción
+    environment:
+      - NODE_ENV=production
+    
+    restart: unless-stopped
+    
+    networks:
+      - tapipiel-network
+
+# ==========================================
+# REDES
+# ==========================================
+# Red virtual para que los contenedores se comuniquen
+networks:
+  tapipiel-network:
+    driver: bridge

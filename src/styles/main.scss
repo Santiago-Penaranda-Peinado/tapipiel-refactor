@@ -1,0 +1,98 @@
+// ============================================
+// MAIN SCSS - TAPIPIEL
+// ============================================
+// Archivo principal que importa todos los estilos
+// Orden de importación: abstracts → base → layout → components → sections
+// ============================================
+
+// ==========================================
+// 1. ABSTRACTS (Variables, mixins, funciones)
+// ==========================================
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// ==========================================
+// 2. BASE (Reset, tipografía, animaciones)
+// ==========================================
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/animations';
+
+// ==========================================
+// 3. COMPONENTS (Botones, cards, forms, etc.)
+// ==========================================
+@import 'components/buttons';
+@import 'components/floating-buttons';
+@import 'components/forms';
+// @import 'components/cards';
+// @import 'components/modal';
+
+// ==========================================
+// 4. LAYOUT (Header, footer, navegación, grid)
+// ==========================================
+@import 'layout/header';
+@import 'layout/footer';
+// @import 'layout/navigation';
+// @import 'layout/grid';
+
+// ==========================================
+// 5. SECTIONS (Hero, servicios, about, etc.)
+// ==========================================
+@import 'sections/hero';
+@import 'sections/services';
+@import 'sections/about';
+@import 'sections/about-features';
+@import 'sections/cleaning-process';
+@import 'sections/materials';
+@import 'sections/contact';
+@import 'sections/thank-you';
+
+// ==========================================
+// UTILIDADES GLOBALES
+// ==========================================
+
+// Container principal
+.container {
+  @include container;
+}
+
+// Espaciados utilitarios
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+.mt-2xl { margin-top: $spacing-2xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+.mb-2xl { margin-bottom: $spacing-2xl; }
+
+.py-sm { padding-top: $spacing-sm; padding-bottom: $spacing-sm; }
+.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
+.py-lg { padding-top: $spacing-lg; padding-bottom: $spacing-lg; }
+.py-xl { padding-top: $spacing-xl; padding-bottom: $spacing-xl; }
+.py-2xl { padding-top: $spacing-2xl; padding-bottom: $spacing-2xl; }
+
+// Display utilities
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+// Flexbox utilities
+.flex-center { @include flex-center; }
+.flex-column { flex-direction: column; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+
+// Grid utilities
+.grid-2 { @include grid(2); }
+.grid-3 { @include grid(3); }
+.grid-4 { @include grid(4); }
+
+// Visibility
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }

@@ -1,0 +1,120 @@
+// ============================================
+// RESET CSS - TAPIPIEL
+// ============================================
+// Normaliza estilos entre navegadores
+// Basado en modern-normalize y mejores prácticas
+// ============================================
+
+// Box sizing universal
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Reset de márgenes y padding
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// HTML y Body
+html {
+  // Base font size (1rem = 16px)
+  font-size: 16px;
+  
+  // Smooth scroll nativo
+  scroll-behavior: smooth;
+  
+  // Mejora el rendering de texto
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  line-height: $line-height-normal;
+  font-family: $font-secondary;
+  color: $color-text-primary;
+  background-color: $color-bg-white;
+  
+  // Evita overflow horizontal
+  overflow-x: hidden;
+}
+
+// Mejora de imágenes y media
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Elimina estilos de listas
+ol,
+ul {
+  list-style: none;
+}
+
+// Links sin decoración por defecto
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+// Botones reset
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+// Forms reset
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+// Textarea sin resize horizontal
+textarea {
+  resize: vertical;
+}
+
+// Títulos con peso normal (se aplican pesos específicos después)
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  line-height: $line-height-tight;
+}
+
+// Evita desbordamiento de texto largo
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+// Tablas
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// HR
+hr {
+  border: 0;
+  border-top: 1px solid $color-border;
+  margin: $spacing-lg 0;
+}

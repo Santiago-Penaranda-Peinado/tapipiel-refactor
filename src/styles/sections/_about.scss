@@ -1,0 +1,24 @@
+// ============================================
+// ABOUT / NOSOTROS - TAPIPIEL
+// ============================================
+// Sección sobre la empresa
+// ============================================
+
+.about {
+  background-color: $color-bg-white;
+  
+  .container {
+    max-width: 900px;
+  }
+  
+  h2 {
+    color: $color-primary;
+  }
+  
+  .lead {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,53 @@
+# ============================================
+# DOCKERIGNORE - TAPIPIEL
+# ============================================
+# Archivos y carpetas que NO se copiarán al contenedor
+# Esto reduce el tamaño de la imagen y mejora el build
+# ============================================
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build
+dist
+build
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+*.md
+!README.md

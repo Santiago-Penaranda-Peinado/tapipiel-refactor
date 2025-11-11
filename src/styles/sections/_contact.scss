@@ -1,0 +1,64 @@
+// ============================================
+// CONTACTO - TAPIPIEL
+// ============================================
+// Sección de información de contacto
+// ============================================
+
+.contact {
+  background-color: $color-bg-light;
+  
+  h2 {
+    color: $color-primary;
+    margin-bottom: $spacing-2xl;
+  }
+  
+  // ==========================================
+  // GRID DE CONTACTO
+  // ==========================================
+  .contact-info {
+    @include grid-auto(250px, $spacing-xl);
+    margin-top: $spacing-2xl;
+  }
+  
+  // ==========================================
+  // ITEM DE CONTACTO
+  // ==========================================
+  .contact-item {
+    background-color: $color-bg-white;
+    padding: $spacing-xl;
+    border-radius: $border-radius-lg;
+    text-align: center;
+    
+    @include box-shadow(sm);
+    @include transition(all, $transition-base);
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+    
+    h3 {
+      color: $color-primary;
+      font-size: $font-size-lg;
+      margin-bottom: $spacing-md;
+    }
+    
+    p {
+      color: $color-text-secondary;
+      margin-bottom: $spacing-sm;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    a {
+      color: $color-secondary;
+      font-weight: $font-weight-semibold;
+      
+      &:hover {
+        color: $color-secondary-light;
+      }
+    }
+  }
+}

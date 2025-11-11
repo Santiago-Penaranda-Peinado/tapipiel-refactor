@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Tapipiel - Tapicería y Limpieza de Muebles en CDMX y Cuernavaca | 50+ Años de Experiencia</title>
+  <meta name="description" content="Empresa mexicana con más de 50 años de experiencia en tapicería y limpieza de muebles de piel. Servicios residenciales, comerciales y de oficina en CDMX y Cuernavaca.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <a href="/" aria-label="Tapipiel - Inicio">
+            <!-- Logo: blanco con negro ovalado horizontal -->
+            <img src="src/assets/images/logo/logotapipiel.png" alt="Tapipiel Logo" class="logo">
+          </a>
+        </div>
+        
+        <ul class="navbar-menu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#limpieza">Limpieza</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#materiales">Materiales</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        
+        <button class="navbar-toggle" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SLIDER -->
+    <section id="inicio" class="hero-slider">
+      <!-- Slide 1: 50 Años de Experiencia -->
+      <div class="hero-slide active" data-bg="src/assets/images/hero/slide-1.jpg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content">
+            <h1>50 Años al Servicio de la Tapicería en México</h1>
+            <p class="lead">Especialistas en tapizar y restaurar todo tipo de muebles de piel. Le damos nueva vida a sus muebles.</p>
+            <div class="hero-cta">
+              <a href="#contacto" class="btn btn-primary btn-lg">Solicitar Cotización</a>
+              <a href="tel:+525633421772" class="btn btn-secondary btn-lg">56 3342 1772</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 2: Tapicería Profesional -->
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-2.jpg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content">
+            <h1>Tapicería Profesional para Hogar y Oficina</h1>
+            <p class="lead">Renovamos salas, sillones, sillas de oficina y más. Los mejores materiales y acabados.</p>
+            <div class="hero-cta">
+              <a href="#servicios" class="btn btn-primary btn-lg">Ver Servicios</a>
+              <a href="https://wa.me/525633421772" class="btn btn-secondary btn-lg">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 3: Limpieza Especializada -->
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-3.jpg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content">
+            <h1>Limpieza Profesional de Muebles de Piel</h1>
+            <p class="lead">Lavado, humectación y protección de muebles. Químicos no dañinos y resultados garantizados.</p>
+            <div class="hero-cta">
+              <a href="#limpieza" class="btn btn-primary btn-lg">Conocer Proceso</a>
+              <a href="tel:+525633421772" class="btn btn-secondary btn-lg">Llamar Ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 4: Restauración de Muebles Clásicos -->
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-4.jpg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content">
+            <h1>Expertos en Restauración de Muebles Clásicos</h1>
+            <p class="lead">Aplicación de hoja de oro y plata. Especialistas en muebles vintage y antigüedades.</p>
+            <div class="hero-cta">
+              <a href="#contacto" class="btn btn-primary btn-lg">Cotizar Restauración</a>
+              <a href="#nosotros" class="btn btn-secondary btn-lg">Conocer Más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Controles del Slider -->
+      <button class="hero-control hero-prev" aria-label="Anterior">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      
+      <button class="hero-control hero-next" aria-label="Siguiente">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
+      
+      <!-- Indicadores -->
+      <div class="hero-indicators">
+        <button class="hero-indicator active" data-slide="0" aria-label="Slide 1"></button>
+        <button class="hero-indicator" data-slide="1" aria-label="Slide 2"></button>
+        <button class="hero-indicator" data-slide="2" aria-label="Slide 3"></button>
+        <button class="hero-indicator" data-slide="3" aria-label="Slide 4"></button>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="about py-2xl">
+      <div class="container">
+        <h2 class="text-center">Más de 50 Años de Experiencia</h2>
+        <p class="lead text-center mb-xl">
+          Es una empresa mexicana con más de 50 años de experiencia. Somos especialistas en tapizar todo tipo de muebles de piel tanto en el sector residencial, comercial y de oficina. Utilizamos los mejores materiales y trabajamos con los más altos estándares de calidad, para brindarles el mejor servicio. Le damos nueva vida a sus muebles de piel, restaurándolos y manteniéndolos en las mejores condiciones.
+        </p>
+        
+        <div class="about-features">
+          <div class="feature-item">
+            <h3>Calidad Garantizada</h3>
+            <p>Los mejores materiales y estándares de calidad</p>
+          </div>
+          <div class="feature-item">
+            <h3>Expertos en Muebles Clásicos</h3>
+            <p>Aplicamos hoja de oro y plata. Especialistas en vintage</p>
+          </div>
+          <div class="feature-item">
+            <h3>Servicio Profesional</h3>
+            <p>Personal capacitado y equipo de última tecnología</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="services py-2xl">
+      <div class="container">
+        <h2 class="text-center">Nuestros Servicios</h2>
+        <p class="lead text-center mb-xl">Tapizamos y reparamos muebles de hogar y oficina</p>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <!-- Imagen: /assets/images/services/residencial.jpg -->
+            <h3>Tapicería Residencial</h3>
+            <ul>
+              <li>Salas</li>
+              <li>Sillas</li>
+              <li>Sillones</li>
+              <li>Butacas</li>
+              <li>Sillas y bancos</li>
+            </ul>
+          </div>
+          
+          <div class="service-card">
+            <!-- Imagen: /assets/images/services/oficina.jpg -->
+            <h3>Muebles de Oficina</h3>
+            <ul>
+              <li>Sillas secretariales</li>
+              <li>Sillones ejecutivos</li>
+              <li>Sillas y bancas de visita</li>
+              <li>Salas de oficina</li>
+              <li>Mantenimiento</li>
+            </ul>
+          </div>
+          
+          <div class="service-card">
+            <!-- Imagen: /assets/images/services/restauracion.jpg -->
+            <h3>Restauración</h3>
+            <ul>
+              <li>Muebles clásicos</li>
+              <li>Hoja de oro/plata</li>
+              <li>Muebles vintage</li>
+              <li>Restauración general</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIMPIEZA -->
+    <section id="limpieza" class="cleaning-process py-2xl">
+      <div class="container">
+        <h2 class="text-center">Servicios de Calidad en Limpieza</h2>
+        <p class="lead text-center mb-xl">
+          Un punto muy importante para proteger la inversión que usted ha hecho en la compra de sus muebles es que sean limpiados por lo menos una vez al año por profesionales en el lavado de muebles.
+        </p>
+        
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Aspirado Profundo</h3>
+          </div>
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Prelavado y Enjuague</h3>
+          </div>
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Inyección-Succión</h3>
+          </div>
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Germicidas</h3>
+          </div>
+          <div class="process-step">
+            <div class="step-number">5</div>
+            <h3>Químicos no Dañinos</h3>
+          </div>
+          <div class="process-step">
+            <div class="step-number">6</div>
+            <h3>Especialistas en Piel</h3>
+          </div>
+        </div>
+        
+        <div class="cleaning-areas mt-2xl">
+          <h3 class="text-center">Lavado y Protección de:</h3>
+          <div class="areas-grid">
+            <div class="area-item">Muebles</div>
+            <div class="area-item">Salas</div>
+            <div class="area-item">Colchones</div>
+            <div class="area-item">Oficina</div>
+            <div class="area-item">Restaurantes</div>
+            <div class="area-item">Bares</div>
+            <div class="area-item">Hoteles</div>
+            <div class="area-item">Hospitales</div>
+            <div class="area-item">Hogar</div>
+            <div class="area-item">Automóviles</div>
+            <div class="area-item">Alfombras</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATERIALES -->
+    <section id="materiales" class="materials py-2xl">
+      <div class="container">
+        <h2 class="text-center">Materiales</h2>
+        <div class="materials-grid">
+          <div class="material-card">
+            <div class="material-image"></div>
+            <h3>Piel</h3>
+          </div>
+          <div class="material-card">
+            <div class="material-image"></div>
+            <h3>Vinipiel</h3>
+          </div>
+          <div class="material-card">
+            <div class="material-image"></div>
+            <h3>Tela</h3>
+          </div>
+          <div class="material-card">
+            <div class="material-image"></div>
+            <h3>Piel Durazno</h3>
+          </div>
+          <div class="material-card">
+            <div class="material-image"></div>
+            <h3>Gamuza</h3>
+          </div>
+          <div class="material-card">
+            <div class="material-image"></div>
+            <h3>Y Muchos Más</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact py-2xl">
+      <div class="container">
+        <h2 class="text-center">Mantente en Contacto</h2>
+        <p class="lead text-center mb-xl">¿Tienes alguna duda? ¿Necesitas un presupuesto?</p>
+        
+        <div class="contact-wrapper">
+          <form id="contactForm" class="contact-form" action="/enviar-formulario.php" method="POST">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="correo">Correo *</label>
+              <input type="email" id="correo" name="correo" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono">
+            </div>
+            
+            <div class="form-group">
+              <label for="asunto">Asunto *</label>
+              <input type="text" id="asunto" name="asunto" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="servicio">Servicio</label>
+              <select id="servicio" name="servicio">
+                <option value="">-- Selecciona Uno --</option>
+                <option value="tapiceria-residencial">Tapicería Residencial</option>
+                <option value="tapiceria-oficina">Tapicería de Oficina</option>
+                <option value="restauracion">Restauración</option>
+                <option value="limpieza">Limpieza de Muebles</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="mensaje">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar Mensaje</button>
+          </form>
+          
+          <div class="contact-info-sidebar">
+            <div class="info-card">
+              <h3>📍 CDMX</h3>
+              <p>Priv. Rancho de La Cruz 36<br>Col. Jamaica, C.P. 15800</p>
+            </div>
+            
+            <div class="info-card">
+              <h3>📞 Teléfonos</h3>
+              <p><a href="tel:+525633421772">56 3342 1772</a> <small>CDMX</small></p>
+              <p><a href="tel:+527779862576">777 986 2576</a> <small>Cuernavaca</small></p>
+            </div>
+            
+            <div class="info-card">
+              <h3>✉️ Email</h3>
+              <p><a href="mailto:ventas@tapipiel.com.mx">ventas@tapipiel.com.mx</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>📍 Ubicación</h4>
+          <p><strong>CDMX:</strong><br>Priv. Rancho de La Cruz 36<br>Col. Jamaica, C.P. 15800</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>📞 Teléfonos</h4>
+          <ul>
+            <li><a href="tel:+525633421772">56 3342 1772</a></li>
+            <li><a href="tel:+527779862576">777 986 2576</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>💬 WhatsApp</h4>
+          <a href="https://wa.me/525633421772" target="_blank" class="whatsapp-link">
+            56 3342 1772 <small>CDMX</small>
+          </a>
+          <a href="https://wa.me/527779862576" target="_blank" class="whatsapp-link">
+            777 986 2576 <small>Cuernavaca</small>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Tapipiel. Todos los derechos reservados.</p>
+        <p class="credits">Site by <a href="http://www.webdisenoempresarial.com/" target="_blank">Web Diseño Empresarial</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTONES FLOTANTES -->
+  <div class="floating-buttons">
+    <a href="https://wa.me/525633421772?text=Hola,%20me%20interesa%20cotizar%20un%20servicio" 
+       class="floating-btn floating-btn-whatsapp" target="_blank" aria-label="WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+    
+    <a href="tel:+525633421772" class="floating-btn floating-btn-phone" aria-label="Teléfono">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+      </svg>
+    </a>
+  </div>
+
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+// ============================================
+// PROCESO DE LIMPIEZA - TAPIPIEL
+// ============================================
+
+.cleaning-process {
+  background: $color-bg-white;
+}
+
+.process-grid {
+  @include grid-auto(200px, $spacing-xl);
+  margin-top: $spacing-2xl;
+}
+
+.process-step {
+  text-align: center;
+  padding: $spacing-xl;
+  background: $color-bg-light;
+  border-radius: $border-radius-lg;
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    transform: translateY(-4px);
+    background: $color-bg-white;
+    box-shadow: $shadow-lg;
+  }
+  
+  .step-number {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto $spacing-lg;
+    @include flex-center;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    color: $color-text-white;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    border-radius: $border-radius-full;
+  }
+  
+  h3 {
+    color: $color-primary;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-sm;
+  }
+  
+  p {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+}
+
+// ==========================================
+// ÁREAS DE APLICACIÓN
+// ==========================================
+
+.cleaning-areas {
+  text-align: center;
+  
+  h3 {
+    color: $color-primary;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.areas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-md;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.area-item {
+  padding: $spacing-md $spacing-lg;
+  background: $color-primary;
+  color: $color-text-white;
+  border-radius: $border-radius-full;
+  font-weight: $font-weight-semibold;
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    background: $color-primary-light;
+    transform: scale(1.05);
+  }
+}

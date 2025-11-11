@@ -1,0 +1,264 @@
+// ============================================
+// MIXINS GLOBALES - TAPIPIEL
+// ============================================
+// Mixins reutilizables para facilitar el desarrollo
+// Incluye: responsive, flexbox, grid, etc.
+// ============================================
+
+// ==========================================
+// 📱 RESPONSIVE BREAKPOINTS
+// ==========================================
+
+// Mixin para media queries responsive
+// Uso: @include respond-to(md) { ... }
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (min-width: $breakpoint-xs) { @content; }
+  }
+  @else if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+  @else if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) { @content; }
+  }
+}
+
+// Media query para máximo ancho (mobile first)
+// Uso: @include respond-down(md) { ... }
+@mixin respond-down($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{$breakpoint-xs - 1px}) { @content; }
+  }
+  @else if $breakpoint == sm {
+    @media (max-width: #{$breakpoint-sm - 1px}) { @content; }
+  }
+  @else if $breakpoint == md {
+    @media (max-width: #{$breakpoint-md - 1px}) { @content; }
+  }
+  @else if $breakpoint == lg {
+    @media (max-width: #{$breakpoint-lg - 1px}) { @content; }
+  }
+  @else if $breakpoint == xl {
+    @media (max-width: #{$breakpoint-xl - 1px}) { @content; }
+  }
+}
+
+// ==========================================
+//  FLEXBOX
+// ==========================================
+
+// Flexbox centrado (vertical y horizontal)
+// Uso: @include flex-center;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flexbox con dirección y gap
+// Uso: @include flex(column, center, center, 1rem);
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// ==========================================
+// 🏗️ GRID
+// ==========================================
+
+// Grid básico con columnas automáticas
+// Uso: @include grid(3, 1rem);
+@mixin grid($columns: 1, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Grid responsive automático
+// Uso: @include grid-auto(300px, 1rem);
+@mixin grid-auto($min-width: 250px, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// ==========================================
+//  EFECTOS VISUALES
+// ==========================================
+
+// Sombra personalizada
+// Uso: @include box-shadow(md);
+@mixin box-shadow($size: md) {
+  @if $size == xs {
+    box-shadow: $shadow-xs;
+  } @else if $size == sm {
+    box-shadow: $shadow-sm;
+  } @else if $size == md {
+    box-shadow: $shadow-md;
+  } @else if $size == lg {
+    box-shadow: $shadow-lg;
+  } @else if $size == xl {
+    box-shadow: $shadow-xl;
+  } @else if $size == 2xl {
+    box-shadow: $shadow-2xl;
+  }
+}
+
+// Transición suave
+// Uso: @include transition(all, 300ms);
+@mixin transition($property: all, $duration: $transition-base, $easing: $ease-in-out) {
+  transition: $property $duration $easing;
+}
+
+// ==========================================
+// 📝 TEXTO
+// ==========================================
+
+// Truncar texto con ellipsis
+// Uso: @include truncate;
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Truncar texto multilínea
+// Uso: @include line-clamp(3);
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ==========================================
+//  IMÁGENES Y MEDIA
+// ==========================================
+
+// Imagen responsive
+// Uso: @include responsive-image;
+@mixin responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Cover de imagen (ocupa todo el contenedor)
+// Uso: @include cover-image;
+@mixin cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+// ==========================================
+// 🎭 OVERLAYS Y CAPAS
+// ==========================================
+
+// Overlay oscuro sobre imagen
+// Uso: @include overlay(rgba(0, 0, 0, 0.5));
+@mixin overlay($color: rgba(0, 0, 0, 0.5)) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color;
+    z-index: 1;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// ==========================================
+// 🔘 BOTONES Y LINKS
+// ==========================================
+
+// Reset de estilos de botón
+// Uso: @include button-reset;
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+
+// Hover de botón con elevación
+// Uso: @include button-hover;
+@mixin button-hover {
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ==========================================
+// 📍 POSICIONAMIENTO
+// ==========================================
+
+// Centrado absoluto
+// Uso: @include absolute-center;
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ==========================================
+// 🎯 UTILIDADES
+// ==========================================
+
+// Ocultar visualmente pero mantener para screen readers
+// Uso: @include sr-only;
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Container centrado con max-width
+// Uso: @include container;
+@mixin container($max-width: $container-max-width, $padding: $container-padding) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}

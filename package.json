@@ -1,0 +1,24 @@
+{
+  "name": "tapipiel-website",
+  "version": "1.0.0",
+  "description": "Sitio web corporativo de Tapipiel - Empresa de tapicería y limpieza de muebles con 50+ años de experiencia",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "tapiceria",
+    "limpieza-muebles",
+    "tapiceria-cdmx",
+    "tapiceria-cuernavaca"
+  ],
+  "author": "Tapipiel",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "sass": "^1.69.0"
+  },
+  "dependencies": {}
+}

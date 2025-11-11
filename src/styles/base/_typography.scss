@@ -1,0 +1,205 @@
+// ============================================
+// TIPOGRAFÍA - TAPIPIEL
+// ============================================
+// Estilos de texto, títulos y párrafos
+// ============================================
+
+// ==========================================
+// TÍTULOS (HEADINGS)
+// ==========================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-3xl; // 40px
+  
+  @include respond-to(md) {
+    font-size: $font-size-4xl; // 48px
+  }
+  
+  @include respond-to(lg) {
+    font-size: $font-size-5xl; // 56px
+  }
+}
+
+h2 {
+  font-size: $font-size-2xl; // 32px
+  
+  @include respond-to(md) {
+    font-size: $font-size-3xl; // 40px
+  }
+}
+
+h3 {
+  font-size: $font-size-xl; // 24px
+  
+  @include respond-to(md) {
+    font-size: $font-size-2xl; // 32px
+  }
+}
+
+h4 {
+  font-size: $font-size-lg; // 20px
+  
+  @include respond-to(md) {
+    font-size: $font-size-xl; // 24px
+  }
+}
+
+h5 {
+  font-size: $font-size-md; // 18px
+  
+  @include respond-to(md) {
+    font-size: $font-size-lg; // 20px
+  }
+}
+
+h6 {
+  font-size: $font-size-base; // 16px
+  
+  @include respond-to(md) {
+    font-size: $font-size-md; // 18px
+  }
+}
+
+// ==========================================
+// PÁRRAFOS Y TEXTO
+// ==========================================
+
+p {
+  font-family: $font-secondary;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Texto destacado (lead)
+.lead {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
+  color: $color-text-secondary;
+}
+
+// Texto pequeño
+.small,
+small {
+  font-size: $font-size-sm;
+  color: $color-text-light;
+}
+
+// ==========================================
+// LINKS
+// ==========================================
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: $color-primary-light;
+    text-decoration: underline;
+  }
+  
+  &:active {
+    color: $color-primary-dark;
+  }
+}
+
+// ==========================================
+// ÉNFASIS Y STRONG
+// ==========================================
+
+strong,
+b {
+  font-weight: $font-weight-bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+// ==========================================
+// BLOCKQUOTE
+// ==========================================
+
+blockquote {
+  border-left: 4px solid $color-primary;
+  padding-left: $spacing-lg;
+  margin: $spacing-xl 0;
+  font-style: italic;
+  color: $color-text-secondary;
+}
+
+// ==========================================
+// CÓDIGO
+// ==========================================
+
+code,
+pre {
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+}
+
+code {
+  background-color: $color-bg-light;
+  padding: 2px 6px;
+  border-radius: $border-radius-sm;
+  color: $color-danger;
+}
+
+pre {
+  background-color: $color-bg-dark;
+  color: $color-text-white;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  overflow-x: auto;
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// ==========================================
+// CLASES UTILITARIAS DE TEXTO
+// ==========================================
+
+// Alineación
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+// Peso
+.text-light { font-weight: $font-weight-light; }
+.text-normal { font-weight: $font-weight-normal; }
+.text-semibold { font-weight: $font-weight-semibold; }
+.text-bold { font-weight: $font-weight-bold; }
+
+// Color
+.text-primary { color: $color-primary; }
+.text-secondary { color: $color-secondary; }
+.text-accent { color: $color-accent; }
+.text-white { color: $color-text-white; }
+.text-muted { color: $color-text-light; }
+
+// Transformación
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+
+// Truncado
+.text-truncate { @include truncate; }

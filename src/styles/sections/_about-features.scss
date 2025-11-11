@@ -1,0 +1,31 @@
+// ============================================
+// ABOUT FEATURES - TAPIPIEL
+// ============================================
+
+.about-features {
+  @include grid-auto(280px, $spacing-xl);
+  margin-top: $spacing-2xl;
+}
+
+.feature-item {
+  text-align: center;
+  padding: $spacing-xl;
+  background: $color-bg-white;
+  border-radius: $border-radius-lg;
+  @include box-shadow(md);
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+  }
+  
+  h3 {
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+  }
+  
+  p {
+    color: $color-text-secondary;
+  }
+}

@@ -1,0 +1,191 @@
+// ============================================
+// FOOTER - TAPIPIEL
+// ============================================
+// Footer con información de contacto y copyright
+// ============================================
+
+.footer {
+  background-color: $color-bg-dark;
+  color: $color-text-white;
+  padding: $spacing-3xl 0 $spacing-lg;
+}
+
+// ==========================================
+// GRID DEL FOOTER
+// ==========================================
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+  
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-col {
+  h4 {
+    color: $color-secondary;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-lg;
+  }
+  
+  p {
+    color: rgba($color-text-white, 0.9);
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-md;
+  }
+  
+  ul {
+    list-style: none;
+    
+    li {
+      margin-bottom: $spacing-sm;
+    }
+  }
+  
+  a {
+    color: $color-text-white;
+    @include transition(color, $transition-base);
+    
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+  
+  small {
+    display: inline-block;
+    margin-left: $spacing-sm;
+    color: rgba($color-text-white, 0.6);
+    font-size: $font-size-xs;
+  }
+}
+
+// ==========================================
+// LOGO DEL FOOTER
+// ==========================================
+
+.footer-logo {
+  margin-bottom: $spacing-lg;
+  
+  .logo-footer {
+    height: 60px;
+    margin-bottom: $spacing-sm;
+  }
+  
+  h3 {
+    color: $color-text-white;
+    font-size: $font-size-xl;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+}
+
+// ==========================================
+// UBICACIONES
+// ==========================================
+
+.footer-location {
+  p {
+    margin-bottom: $spacing-lg;
+    
+    strong {
+      color: $color-secondary;
+      display: block;
+      margin-bottom: $spacing-xs;
+    }
+  }
+}
+
+// ==========================================
+// TELÉFONOS
+// ==========================================
+
+.footer-phones {
+  li {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    
+    a {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-lg;
+    }
+  }
+  
+  .location-tag {
+    padding: 2px 8px;
+    background: rgba($color-secondary, 0.2);
+    color: $color-secondary;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-xs;
+  }
+}
+
+// ==========================================
+// WHATSAPP LINKS
+// ==========================================
+
+.whatsapp-links {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  background: rgba(#46C254, 0.1);
+  border-radius: $border-radius-md;
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    background: #46C254;
+    transform: translateX(4px);
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+  
+  small {
+    display: block;
+    margin-left: 0;
+    margin-top: $spacing-xs;
+  }
+}
+
+// ==========================================
+// FOOTER BOTTOM
+// ==========================================
+
+.footer-bottom {
+  padding-top: $spacing-xl;
+  border-top: 1px solid rgba($color-text-white, 0.1);
+  text-align: center;
+  
+  p {
+    color: rgba($color-text-white, 0.7);
+    margin: 0;
+    font-size: $font-size-sm;
+  }
+  
+  .credits {
+    margin-top: $spacing-sm;
+    font-size: $font-size-xs;
+    color: rgba($color-text-white, 0.5);
+    
+    a {
+      color: $color-secondary;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}

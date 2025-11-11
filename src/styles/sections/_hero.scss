@@ -1,0 +1,301 @@
+// ============================================
+// HERO SLIDER - TAPIPIEL
+// ============================================
+// Banner principal con slider automático de imágenes
+// ============================================
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  min-height: 600px;
+  overflow: hidden;
+  
+  @include respond-to(md) {
+    height: 700px;
+    min-height: 700px;
+  }
+  
+  @include respond-to(lg) {
+    height: 80vh;
+    min-height: 80vh;
+  }
+}
+
+// ==========================================
+// SLIDES INDIVIDUALES
+// ==========================================
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  
+  @include flex-center;
+  text-align: center;
+  
+  // Background con gradiente por defecto
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  @include respond-to(md) {
+    min-height: 700px;
+  }
+  
+  @include respond-to(lg) {
+    min-height: 80vh;
+  }
+  
+  // Transiciones suaves
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  @include transition(all, 1s);
+  
+  // Slide activo - mantener position absolute para que funcione el height 100%
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    z-index: 1;
+  }
+  
+  // Contenido del slide
+  .container {
+    position: relative;
+    z-index: 2;
+    padding-top: $spacing-3xl;
+    padding-bottom: $spacing-3xl;
+  }
+}
+
+// ==========================================
+// OVERLAY OSCURO
+// ==========================================
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgb(0 0 0 / 56%) 0%, rgb(0 0 0 / 32%) 100%);
+  z-index: 1;
+}
+
+// ==========================================
+// CONTENIDO DEL SLIDE
+// ==========================================
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease-out;
+  
+  // TÍTULO
+  h1 {
+    color: $color-text-white;
+    margin-bottom: $spacing-lg;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  // LEAD TEXT
+  .lead {
+    color: rgba($color-text-white, 0.95);
+    font-size: $font-size-lg;
+    max-width: 700px;
+    margin: 0 auto $spacing-2xl;
+    
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+  
+  // BOTONES CTA
+  .hero-cta {
+    @include flex(row, center, center);
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+    
+    .btn {
+      min-width: 200px;
+      
+      // Override para botones en hero
+      &.btn-primary {
+        background-color: $color-text-white;
+        color: $color-primary;
+        
+        &:hover {
+          background-color: $color-bg-light;
+          box-shadow: $shadow-2xl;
+        }
+      }
+      
+      &.btn-secondary {
+        background-color: transparent;
+        border: 2px solid $color-text-white;
+        color: $color-text-white;
+        
+        &:hover {
+          background-color: $color-text-white;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+// ==========================================
+// CONTROLES DE NAVEGACIÓN (FLECHAS)
+// ==========================================
+
+.hero-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  
+  @include button-reset;
+  @include flex-center;
+  
+  width: 50px;
+  height: 50px;
+  
+  background: rgba($color-bg-white, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba($color-text-white, 0.3);
+  border-radius: $border-radius-full;
+  color: $color-text-white;
+  
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    background: rgba($color-bg-white, 0.3);
+    border-color: $color-text-white;
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  // Ocultar en móviles pequeños
+  @include respond-down(sm) {
+    display: none;
+  }
+}
+
+.hero-prev {
+  left: $spacing-lg;
+  
+  @include respond-to(md) {
+    left: $spacing-2xl;
+  }
+}
+
+.hero-next {
+  right: $spacing-lg;
+  
+  @include respond-to(md) {
+    right: $spacing-2xl;
+  }
+}
+
+// ==========================================
+// INDICADORES (DOTS)
+// ==========================================
+
+.hero-indicators {
+  position: absolute;
+  bottom: $spacing-xl;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  
+  @include flex(row, center, center);
+  gap: $spacing-md;
+  
+  @include respond-to(md) {
+    bottom: $spacing-2xl;
+  }
+}
+
+.hero-indicator {
+  @include button-reset;
+  
+  width: 12px;
+  height: 12px;
+  
+  background: rgba($color-text-white, 0.4);
+  border: 2px solid rgba($color-text-white, 0.6);
+  border-radius: $border-radius-full;
+  
+  @include transition(all, $transition-base);
+  
+  &:hover {
+    background: rgba($color-text-white, 0.7);
+    transform: scale(1.2);
+  }
+  
+  &.active {
+    width: 40px;
+    background: $color-text-white;
+    border-color: $color-text-white;
+  }
+  
+  // Animación de progreso para el indicador activo
+  &.active {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background: $color-secondary;
+      animation: indicatorProgress 8s linear;
+    }
+  }
+}
+
+// ==========================================
+// ANIMACIÓN DE PROGRESO
+// ==========================================
+
+@keyframes indicatorProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+// ==========================================
+// ANIMACIONES DE ENTRADA
+// ==========================================
+
+// Fade in up (ya existe en _animations.scss, pero lo reforzamos aquí)
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

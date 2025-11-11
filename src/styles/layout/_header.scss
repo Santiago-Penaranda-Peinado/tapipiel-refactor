@@ -1,0 +1,249 @@
+// ============================================
+// HEADER - TAPIPIEL
+// ============================================
+// Estilos del header principal y efectos sticky
+// ============================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-sticky;
+  
+  background-color: $color-bg-white;
+  border-bottom: 1px solid $color-border-light;
+  
+  @include transition(all, $transition-base);
+  
+  // ==========================================
+  // STICKY EFFECT (cuando se hace scroll)
+  // ==========================================
+  &.sticky {
+    box-shadow: $shadow-md;
+    background-color: rgba($color-bg-white, 0.98);
+    backdrop-filter: blur(10px);
+  }
+  
+  // ==========================================
+  // HIDDEN STATE (scroll down)
+  // ==========================================
+  &.hidden {
+    transform: translateY(-100%);
+  }
+}
+
+// ==========================================
+// NAVBAR CONTAINER
+// ==========================================
+
+.navbar {
+  @include container;
+  @include flex(row, space-between, center);
+  
+  min-height: 80px;
+  padding-top: $spacing-md;
+  padding-bottom: $spacing-md;
+  
+  @include respond-to(md) {
+    min-height: 90px;
+  }
+}
+
+// ==========================================
+// LOGO/BRAND
+// ==========================================
+
+.navbar-brand {
+  z-index: $z-index-sticky + 1;
+  
+  .logo {
+    height: 50px;
+    width: auto;
+    @include transition(transform, $transition-base);
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    @include respond-to(md) {
+      height: 60px;
+    }
+  }
+}
+
+// ==========================================
+// BOTÓN HAMBURGUESA (MÓVIL)
+// ==========================================
+
+.navbar-toggle {
+  @include button-reset;
+  @include flex(column, center, center);
+  gap: 5px;
+  
+  width: 40px;
+  height: 40px;
+  padding: $spacing-sm;
+  
+  z-index: $z-index-sticky + 1;
+  
+  // Ocultar en desktop
+  @include respond-to(md) {
+    display: none;
+  }
+  
+  // Líneas del hamburguesa
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: $color-primary;
+    border-radius: 2px;
+    @include transition(all, $transition-base);
+  }
+  
+  // Estado activo (X)
+  &.active {
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
+
+// ==========================================
+// MENÚ DE NAVEGACIÓN
+// ==========================================
+
+.navbar-menu {
+  // MÓVIL: Menú fullscreen overlay
+  @include respond-down(md) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: rgba($color-primary, 0.98);
+    backdrop-filter: blur(10px);
+    
+    @include flex(column, center, center);
+    gap: $spacing-xl;
+    
+    // Oculto por defecto
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    @include transition(all, $transition-base);
+    
+    // Estado activo
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+    
+    li {
+      opacity: 0;
+      transform: translateY(20px);
+      @include transition(all, $transition-base);
+      
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{$i * 0.1}s;
+        }
+      }
+    }
+    
+    &.active li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    a {
+      font-family: $font-primary;
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $color-text-white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      
+      &:hover {
+        color: $color-secondary;
+        text-decoration: none;
+      }
+      
+      &.active {
+        color: $color-secondary;
+      }
+    }
+  }
+  
+  // DESKTOP: Menú horizontal
+  @include respond-to(md) {
+    @include flex(row, flex-end, center);
+    gap: $spacing-xl;
+    
+    a {
+      font-family: $font-primary;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+      
+      position: relative;
+      padding: $spacing-sm 0;
+      
+      @include transition(color, $transition-base);
+      
+      // Underline effect
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $color-primary;
+        @include transition(width, $transition-base);
+      }
+      
+      &:hover {
+        color: $color-primary;
+        text-decoration: none;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+      
+      &.active {
+        color: $color-primary;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// ==========================================
+// ESPACIADO PARA EL HEADER FIXED
+// ==========================================
+
+// Agregar padding al body para que el contenido no quede debajo del header
+body {
+  padding-top: 80px;
+  
+  @include respond-to(md) {
+    padding-top: 90px;
+  }
+}

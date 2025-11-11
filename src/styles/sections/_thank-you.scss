@@ -1,0 +1,115 @@
+// ============================================
+// PÁGINA DE AGRADECIMIENTO - TAPIPIEL
+// ============================================
+
+.thank-you-page {
+  min-height: 70vh;
+  @include flex-center;
+  padding: $spacing-4xl 0;
+  background: linear-gradient(135deg, $color-bg-light 0%, $color-bg-white 100%);
+}
+
+.thank-you-content {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  
+  .success-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto $spacing-2xl;
+    @include flex-center;
+    background: linear-gradient(135deg, $color-success, #20c997);
+    border-radius: $border-radius-full;
+    color: $color-text-white;
+    animation: scaleIn 0.5s ease-out;
+    
+    svg {
+      animation: fadeInUp 0.5s ease-out 0.3s backwards;
+    }
+  }
+  
+  h1 {
+    color: $color-primary;
+    margin-bottom: $spacing-lg;
+  }
+  
+  .lead {
+    font-size: $font-size-xl;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-2xl;
+  }
+  
+  .contact-reminder {
+    background: $color-bg-white;
+    padding: $spacing-2xl;
+    border-radius: $border-radius-lg;
+    @include box-shadow(md);
+    margin-bottom: $spacing-2xl;
+    
+    h3 {
+      color: $color-primary;
+      margin-bottom: $spacing-xl;
+    }
+  }
+  
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+  
+  .contact-option {
+    @include flex(row, flex-start, center, $spacing-md);
+    padding: $spacing-lg;
+    background: $color-bg-light;
+    border-radius: $border-radius-md;
+    @include transition(all, $transition-base);
+    text-align: left;
+    
+    &:hover {
+      background: $color-primary;
+      color: $color-text-white;
+      transform: translateX(8px);
+      
+      svg {
+        color: $color-text-white;
+      }
+      
+      strong,
+      span {
+        color: $color-text-white;
+      }
+    }
+    
+    svg {
+      flex-shrink: 0;
+      color: $color-primary;
+      @include transition(color, $transition-base);
+    }
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+    }
+    
+    strong {
+      font-size: $font-size-lg;
+      color: $color-primary;
+      @include transition(color, $transition-base);
+    }
+    
+    span {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+      @include transition(color, $transition-base);
+    }
+  }
+  
+  .cta-buttons {
+    @include flex(row, center, center, $spacing-lg);
+    flex-wrap: wrap;
+    margin-top: $spacing-xl;
+  }
+}

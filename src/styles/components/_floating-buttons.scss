@@ -1,0 +1,155 @@
+// ============================================
+// BOTONES FLOTANTES - TAPIPIEL
+// ============================================
+// Botones de acción flotantes (WhatsApp, Teléfono)
+// ============================================
+
+.floating-buttons {
+  position: fixed;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
+  z-index: $z-index-fixed;
+  
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  
+  // Responsive: mover a la esquina en móviles
+  @include respond-down(sm) {
+    bottom: $spacing-lg;
+    right: $spacing-lg;
+  }
+}
+
+// ==========================================
+// BOTÓN FLOTANTE BASE
+// ==========================================
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 60px;
+  height: 60px;
+  
+  border-radius: $border-radius-full;
+  box-shadow: $shadow-lg;
+  
+  cursor: pointer;
+  @include transition(all, $transition-base);
+  
+  // Hover effect
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: $shadow-xl;
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(1);
+  }
+  
+  // Icono dentro del botón
+  svg,
+  img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+// ==========================================
+// VARIANTES ESPECÍFICAS
+// ==========================================
+
+// Botón de WhatsApp
+.floating-btn-whatsapp {
+  background-color: $color-accent;
+  color: $color-text-white;
+  
+  &:hover {
+    background-color: $color-accent-hover;
+  }
+  
+  // Animación de pulso para llamar la atención
+  animation: pulse 2s ease-in-out infinite;
+}
+
+// Botón de Teléfono
+.floating-btn-phone {
+  background-color: $color-secondary;
+  color: $color-text-white;
+  
+  &:hover {
+    background-color: $color-secondary-light;
+  }
+}
+
+// Botón scroll to top
+.floating-btn-top {
+  background-color: $color-primary;
+  color: $color-text-white;
+  
+  // Oculto por defecto
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  @include transition(all, $transition-base);
+  
+  // Visible cuando se hace scroll
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    background-color: $color-primary-light;
+  }
+}
+
+// ==========================================
+// TOOLTIP DEL BOTÓN FLOTANTE
+// ==========================================
+
+.floating-btn-tooltip {
+  position: absolute;
+  right: 70px;
+  
+  padding: $spacing-sm $spacing-md;
+  
+  background-color: $color-bg-dark;
+  color: $color-text-white;
+  
+  font-size: $font-size-sm;
+  white-space: nowrap;
+  
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  
+  // Oculto por defecto
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  @include transition(all, $transition-fast);
+  
+  // Flecha del tooltip
+  &::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    border-color: transparent transparent transparent $color-bg-dark;
+  }
+  
+  // Mostrar al hacer hover en el botón
+  .floating-btn:hover & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
