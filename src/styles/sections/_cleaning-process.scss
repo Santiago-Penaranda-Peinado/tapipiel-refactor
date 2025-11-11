@@ -1,85 +1,410 @@
 // ============================================
 // PROCESO DE LIMPIEZA - TAPIPIEL
 // ============================================
+// Sección que muestra el proceso de limpieza en 6 pasos
+// con diseño cohesivo e integrado con el resto del sitio
+// ============================================
 
 .cleaning-process {
-  background: $color-bg-white;
-}
+  background: linear-gradient(135deg, $color-bg-light 0%, $color-bg-white 50%, $color-bg-lighter 100%);
+  position: relative;
+  overflow: hidden;
 
-.process-grid {
-  @include grid-auto(200px, $spacing-xl);
-  margin-top: $spacing-2xl;
-}
-
-.process-step {
-  text-align: center;
-  padding: $spacing-xl;
-  background: $color-bg-light;
-  border-radius: $border-radius-lg;
-  @include transition(all, $transition-base);
-  
-  &:hover {
-    transform: translateY(-4px);
-    background: $color-bg-white;
-    box-shadow: $shadow-lg;
+  // Efecto decorativo sutil de fondo
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba($color-primary, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
   }
-  
-  .step-number {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto $spacing-lg;
-    @include flex-center;
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ==========================================
+// HEADER DE LA SECCIÓN
+// ==========================================
+
+.cleaning-header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  position: relative;
+  z-index: 1;
+
+  .cleaning-badge {
+    display: inline-block;
+    padding: $spacing-sm $spacing-lg;
     background: linear-gradient(135deg, $color-primary, $color-primary-light);
     color: $color-text-white;
-    font-size: $font-size-2xl;
-    font-weight: $font-weight-bold;
     border-radius: $border-radius-full;
-  }
-  
-  h3 {
-    color: $color-primary;
-    font-size: $font-size-lg;
-    margin-bottom: $spacing-sm;
-  }
-  
-  p {
     font-size: $font-size-sm;
-    color: $color-text-secondary;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: $spacing-lg;
+    @include box-shadow(sm);
   }
-}
 
-// ==========================================
-// ÁREAS DE APLICACIÓN
-// ==========================================
-
-.cleaning-areas {
-  text-align: center;
-  
-  h3 {
+  .cleaning-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
     color: $color-primary;
-    margin-bottom: $spacing-xl;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @include respond-to(md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .cleaning-subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
   }
 }
 
-.areas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: $spacing-md;
-  max-width: 800px;
-  margin: 0 auto;
+// ==========================================
+// GRID DE PASOS DEL PROCESO
+// ==========================================
+
+.process-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-4xl;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.area-item {
-  padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-text-white;
-  border-radius: $border-radius-full;
-  font-weight: $font-weight-semibold;
+// ==========================================
+// TARJETAS DE PASOS INDIVIDUALES
+// ==========================================
+
+.process-step {
+  background: $color-bg-white;
+  border-radius: $border-radius-xl;
+  padding: $spacing-2xl;
+  @include box-shadow(md);
   @include transition(all, $transition-base);
-  
+  position: relative;
+  text-align: center;
+  border-top: 4px solid $color-primary;
+
+  // Hover effect elegante
   &:hover {
-    background: $color-primary-light;
-    transform: scale(1.05);
+    transform: translateY(-8px);
+    @include box-shadow(xl);
+
+    .step-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, $color-primary-light, $color-primary);
+    }
+
+    .step-number {
+      color: $color-primary-light;
+    }
+  }
+
+  // Número del paso (grande y decorativo)
+  .step-number {
+    font-size: 4rem;
+    font-weight: $font-weight-extrabold;
+    color: rgba($color-primary, 0.1);
+    line-height: 1;
+    margin-bottom: -$spacing-xl;
+    @include transition(color, $transition-base);
+  }
+
+  // Ícono del paso
+  .step-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto $spacing-lg;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    border-radius: $border-radius-lg;
+    @include flex-center;
+    color: $color-text-white;
+    @include box-shadow(sm);
+    @include transition(all, $transition-base);
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  // Título del paso
+  .step-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-md;
+  }
+
+  // Descripción del paso
+  .step-description {
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+}
+
+// ==========================================
+// CTA CON ÁREAS DE APLICACIÓN
+// ==========================================
+
+.cleaning-cta {
+  background: linear-gradient(135deg, $color-primary, $color-primary-light);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-4xl $spacing-3xl;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  @include box-shadow(xl);
+
+  // Efecto decorativo de fondo
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($color-bg-white, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($color-bg-white, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-white;
+    margin-bottom: $spacing-lg;
+
+    @include respond-to(md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  .cta-description {
+    font-size: $font-size-lg;
+    color: rgba($color-text-white, 0.95);
+    max-width: 700px;
+    margin: 0 auto $spacing-2xl;
+    line-height: $line-height-relaxed;
+  }
+
+  // Tags de áreas de aplicación
+  .cta-areas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .area-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-lg;
+    background: rgba($color-bg-white, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba($color-bg-white, 0.3);
+    border-radius: $border-radius-full;
+    color: $color-text-white;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    @include transition(all, $transition-base);
+
+    &:hover {
+      background: rgba($color-bg-white, 0.3);
+      transform: translateY(-2px);
+    }
+
+    i {
+      font-size: $font-size-base;
+    }
+  }
+
+  // Botón CTA
+  .btn {
+    margin-top: $spacing-lg;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+// ==========================================
+// RESPONSIVE DESIGN
+// ==========================================
+
+@include respond-down(md) {
+  .cleaning-header {
+    margin-bottom: $spacing-3xl;
+
+    .cleaning-title {
+      font-size: $font-size-3xl;
+    }
+
+    .cleaning-subtitle {
+      font-size: $font-size-base;
+    }
+  }
+
+  .process-steps {
+    gap: $spacing-xl;
+    margin-bottom: $spacing-3xl;
+  }
+
+  .process-step {
+    padding: $spacing-xl;
+
+    .step-number {
+      font-size: 3rem;
+      margin-bottom: -$spacing-lg;
+    }
+
+    .step-icon {
+      width: 70px;
+      height: 70px;
+
+      i {
+        font-size: 1.75rem;
+      }
+    }
+
+    .step-title {
+      font-size: $font-size-lg;
+    }
+  }
+
+  .cleaning-cta {
+    padding: $spacing-3xl $spacing-2xl;
+
+    .cta-title {
+      font-size: $font-size-2xl;
+    }
+
+    .cta-description {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+@include respond-down(sm) {
+  .cleaning-header {
+    margin-bottom: $spacing-2xl;
+
+    .cleaning-badge {
+      font-size: $font-size-xs;
+      padding: $spacing-xs $spacing-md;
+    }
+
+    .cleaning-title {
+      font-size: $font-size-2xl;
+    }
+
+    .cleaning-subtitle {
+      font-size: $font-size-sm;
+    }
+  }
+
+  .process-steps {
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+  }
+
+  .process-step {
+    padding: $spacing-lg;
+
+    .step-number {
+      font-size: 2.5rem;
+      margin-bottom: -$spacing-md;
+    }
+
+    .step-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: $spacing-md;
+
+      i {
+        font-size: 1.5rem;
+      }
+    }
+
+    .step-title {
+      font-size: $font-size-base;
+    }
+
+    .step-description {
+      font-size: $font-size-sm;
+    }
+  }
+
+  .cleaning-cta {
+    padding: $spacing-2xl $spacing-lg;
+    border-radius: $border-radius-xl;
+
+    .cta-title {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+    }
+
+    .cta-description {
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-xl;
+    }
+
+    .cta-areas {
+      gap: $spacing-sm;
+      margin-bottom: $spacing-xl;
+    }
+
+    .area-tag {
+      font-size: $font-size-xs;
+      padding: $spacing-xs $spacing-md;
+
+      i {
+        font-size: $font-size-sm;
+      }
+    }
   }
 }

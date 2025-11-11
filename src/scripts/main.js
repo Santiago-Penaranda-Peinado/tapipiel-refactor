@@ -12,6 +12,7 @@ import { initNavigation } from './modules/navigation.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';
 import { initScrollTop } from './modules/scroll-top.js';
 import { initHeroSlider } from './modules/hero-slider.js';
+import { initAboutStats } from './modules/about-stats.js';  
 
 // ==========================================
 // INICIALIZACIÓN DE LA APLICACIÓN
@@ -28,8 +29,9 @@ function init() {
   initSmoothScroll();
   initScrollTop();
   initHeroSlider();
-  
-  console.log('✅ Todos los módulos cargados correctamente');
+  initAboutStats();
+
+  console.log('Todos los módulos cargados correctamente');
 }
 
 // ==========================================

@@ -66,26 +66,15 @@ export function initNavigation() {
   // STICKY HEADER AL HACER SCROLL
   // ==========================================
   
-  let lastScrollY = window.scrollY;
-  
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     
-    // Agregar clase sticky cuando se hace scroll
+    // Agregar clase sticky cuando se hace scroll (header se hace compacto)
     if (currentScrollY > 100) {
       header.classList.add('sticky');
     } else {
       header.classList.remove('sticky');
     }
-    
-    // Ocultar header al hacer scroll down, mostrar al hacer scroll up
-    if (currentScrollY > lastScrollY && currentScrollY > 200) {
-      header.classList.add('hidden');
-    } else {
-      header.classList.remove('hidden');
-    }
-    
-    lastScrollY = currentScrollY;
   });
   
   // ==========================================

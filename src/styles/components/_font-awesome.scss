@@ -1,0 +1,196 @@
+// ============================================================================
+// FONT AWESOME ICONS - Estilos y tamaños para iconos de Font Awesome
+// ============================================================================
+// Este archivo centraliza los estilos de los iconos de Font Awesome
+// utilizados en todo el sitio.
+
+// ----------------------------------------------------------------------------
+// Estilos base para todos los iconos
+// ----------------------------------------------------------------------------
+.fas,
+.fab,
+.far {
+  // Asegurar que los iconos hereden el color del texto padre
+  color: currentColor;
+  
+  // Mejorar renderizado de iconos
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ----------------------------------------------------------------------------
+// HERO SLIDER - Controles de navegación (chevrons)
+// ----------------------------------------------------------------------------
+.hero-control {
+  i {
+    font-size: 2rem; // 32px - Tamaño más visible para los controles
+    
+    @include respond-to(md) {
+      font-size: 2.5rem; // 40px en tablets y desktop
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// ABOUT SECTION - Iconos de características
+// ----------------------------------------------------------------------------
+// Iconos principales de las tarjetas de características (award, crown, briefcase)
+.feature-card {
+  i {
+    font-size: 3rem; // 48px - Iconos grandes para tarjetas
+    
+    @include respond-to(md) {
+      font-size: 3.5rem; // 56px en tablets y desktop
+    }
+  }
+}
+
+// Iconos de check-circle en las listas de características
+.feature-list {
+  i {
+    font-size: 1.25rem; // 20px - Tamaño adecuado para listas
+    margin-right: 0.5rem;
+    
+    @include respond-to(md) {
+      font-size: 1.5rem; // 24px en tablets y desktop
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// SERVICES SECTION - Iconos en tarjetas y listas
+// ----------------------------------------------------------------------------
+// Iconos de check en las listas de servicios
+.service-features {
+  i.fa-check {
+    font-size: 1rem; // 16px - Compacto para listas de servicios
+    margin-right: 0.75rem;
+    color: $color-accent;
+    
+    @include respond-to(md) {
+      font-size: 1.125rem; // 18px en tablets y desktop
+    }
+  }
+}
+
+// Iconos de flecha en los botones CTA de servicios
+.service-cta {
+  i.fa-arrow-right {
+    font-size: 1rem; // 16px
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    
+    @include respond-to(md) {
+      font-size: 1.125rem; // 18px en tablets y desktop
+    }
+  }
+  
+  // Animación al hacer hover en el botón
+  &:hover i.fa-arrow-right {
+    transform: translateX(4px);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// FLOATING BUTTONS - WhatsApp y teléfono
+// ----------------------------------------------------------------------------
+.floating-btn {
+  i {
+    font-size: 1.75rem; // 28px - Iconos grandes para botones flotantes
+    
+    @include respond-to(md) {
+      font-size: 2rem; // 32px en tablets y desktop
+    }
+  }
+  
+  // Color específico para WhatsApp
+  &-whatsapp i {
+    color: $color-bg-white;
+  }
+  
+  // Color específico para teléfono
+  &-phone i {
+    color: $color-bg-white;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// UTILITIES - Clases utilitarias para ajustar tamaños manualmente
+// ----------------------------------------------------------------------------
+// Tamaños específicos que pueden aplicarse directamente a iconos
+.icon-xs {
+  font-size: 0.75rem !important; // 12px
+}
+
+.icon-sm {
+  font-size: 1rem !important; // 16px
+}
+
+.icon-md {
+  font-size: 1.5rem !important; // 24px
+}
+
+.icon-lg {
+  font-size: 2rem !important; // 32px
+}
+
+.icon-xl {
+  font-size: 2.5rem !important; // 40px
+}
+
+.icon-2xl {
+  font-size: 3rem !important; // 48px
+}
+
+.icon-3xl {
+  font-size: 3.5rem !important; // 56px
+}
+
+.icon-4xl {
+  font-size: 4rem !important; // 64px
+}
+
+// ----------------------------------------------------------------------------
+// ANIMATIONS - Animaciones para iconos
+// ----------------------------------------------------------------------------
+// Rotación suave (útil para spinners o iconos de carga)
+.icon-spin {
+  animation: icon-spin 2s linear infinite;
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Pulso suave
+.icon-pulse {
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Rebote
+.icon-bounce {
+  animation: icon-bounce 1s ease-in-out infinite;
+}
+
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

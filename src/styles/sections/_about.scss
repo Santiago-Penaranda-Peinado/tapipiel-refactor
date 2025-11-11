@@ -1,24 +1,490 @@
 // ============================================
-// ABOUT / NOSOTROS - TAPIPIEL
+// ABOUT ENHANCED - TAPIPIEL
 // ============================================
-// Sección sobre la empresa
+// Sección "Nosotros" mejorada con diseño moderno
 // ============================================
 
-.about {
-  background-color: $color-bg-white;
-  
-  .container {
-    max-width: 900px;
+.about-enhanced {
+  background: linear-gradient(135deg, $color-bg-light 0%, $color-bg-white 50%, $color-bg-lighter 100%);
+  position: relative;
+  overflow: hidden;
+
+  // Efecto de fondo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba($color-primary, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
   }
-  
-  h2 {
+}
+
+// ==========================================
+// HEADER MEJORADO
+// ==========================================
+
+.about-header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  position: relative;
+  z-index: 1;
+}
+
+.about-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $spacing-xl;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, $color-primary, $color-primary-light);
+  border-radius: $border-radius-2xl;
+  color: $color-text-white;
+  @include box-shadow(lg);
+  animation: float 3s ease-in-out infinite;
+
+  .badge-number {
+    font-size: 3.5rem;
+    font-weight: $font-weight-extrabold;
+    line-height: 1;
+    margin-bottom: $spacing-xs;
+  }
+
+  .badge-text {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.about-title {
+  font-size: $font-size-4xl;
+  color: $color-primary;
+  margin-bottom: $spacing-lg;
+  background: linear-gradient(135deg, $color-primary, $color-primary-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @include respond-to(md) {
+    font-size: $font-size-5xl;
+  }
+}
+
+.about-subtitle {
+  font-size: $font-size-xl;
+  color: $color-text-secondary;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: $font-weight-light;
+}
+
+// ==========================================
+// CONTENIDO PRINCIPAL
+// ==========================================
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-3xl;
+  margin-bottom: $spacing-4xl;
+  position: relative;
+  z-index: 1;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4xl;
+  }
+}
+
+.about-text {
+  .text-group {
+    margin-bottom: $spacing-2xl;
+
+    h3 {
+      font-size: $font-size-2xl;
+      color: $color-primary;
+      margin-bottom: $spacing-lg;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, $color-primary, $color-primary-light);
+        border-radius: 2px;
+      }
+    }
+
+    p {
+      font-size: $font-size-lg;
+      line-height: $line-height-relaxed;
+      color: $color-text-secondary;
+      margin-bottom: $spacing-lg;
+
+      strong {
+        color: $color-primary;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+}
+
+// ==========================================
+// ESTADÍSTICAS
+// ==========================================
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+  margin-top: $spacing-2xl;
+
+  .stat-item {
+    text-align: center;
+    padding: $spacing-lg;
+    background: $color-bg-white;
+    border-radius: $border-radius-lg;
+    @include box-shadow(md);
+    @include transition(all, $transition-base);
+
+    &:hover {
+      transform: translateY(-4px);
+      @include box-shadow(lg);
+    }
+  }
+
+  .stat-number {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-extrabold;
     color: $color-primary;
+    line-height: 1;
+    margin-bottom: $spacing-sm;
+    
+    // Variante con signo "+" antes del número
+    &--plus::before {
+      content: '+';
+      margin-right: 2px;
+    }
   }
-  
-  .lead {
-    font-size: $font-size-lg;
+
+  .stat-label {
+    font-size: $font-size-sm;
     color: $color-text-secondary;
-    max-width: 800px;
-    margin: 0 auto;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// ==========================================
+// SECCIÓN VISUAL
+// ==========================================
+
+.about-visual {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  border-radius: $border-radius-2xl;
+  overflow: hidden;
+  @include box-shadow(xl);
+
+  .main-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include respond-to(md) {
+      height: 500px;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-secondary, 0.1) 100%);
+    }
+  }
+}
+
+.floating-card {
+  position: absolute;
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  @include box-shadow(lg);
+  @include flex(row, flex-start, center);
+  gap: $spacing-md;
+  animation: float 3s ease-in-out infinite;
+  z-index: 2;
+
+  .card-icon {
+    font-size: $font-size-2xl;
+    flex-shrink: 0;
+  }
+
+  .card-content {
+    h4 {
+      font-size: $font-size-base;
+      color: $color-primary;
+      margin-bottom: $spacing-xs;
+      font-weight: $font-weight-semibold;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+      margin: 0;
+    }
+  }
+
+  &.quality-card {
+    top: 20px;
+    left: 20px;
+    animation-delay: 0s;
+  }
+
+  &.experience-card {
+    bottom: 20px;
+    right: 20px;
+    animation-delay: 1.5s;
+  }
+}
+
+// ==========================================
+// FEATURES MEJORADOS
+// ==========================================
+
+.enhanced-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-4xl;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  background: $color-bg-white;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-xl;
+  text-align: center;
+  @include box-shadow(md);
+  @include transition(all, $transition-base);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color-primary, $color-primary-light);
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    @include box-shadow(xl);
+
+    .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+      color: $color-primary-light;
+    }
+  }
+
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto $spacing-lg;
+    @include flex-center;
+    background: linear-gradient(135deg, $color-bg-light, $color-bg-lighter);
+    border-radius: $border-radius-full;
+    color: $color-primary;
+    @include transition(all, $transition-base);
+  }
+
+  h3 {
+    color: $color-primary;
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    color: $color-text-secondary;
+    margin-bottom: $spacing-lg;
+    line-height: $line-height-relaxed;
+  }
+}
+
+.feature-list {
+  list-style: none;
+  text-align: left;
+
+  li {
+    padding: $spacing-sm 0;
+    color: $color-text-secondary;
+    position: relative;
+    padding-left: $spacing-lg;
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: $color-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+// ==========================================
+// CTA FINAL
+// ==========================================
+
+.about-cta {
+  position: relative;
+  border-radius: $border-radius-2xl;
+  padding: $spacing-4xl;
+  text-align: center;
+  color: $color-text-white;
+  @include box-shadow(xl);
+  overflow: hidden;
+  
+  // Imagen de fondo
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 350px;
+  @include flex-center;
+  
+  // Overlay con degradado de los colores de la empresa
+  .cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgb(0 0 0 / 92%) 0%, rgb(0 0 0 / 27%) 50%, rgb(2 2 2 / 92%) 100%);
+    z-index: 1;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  h3 {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-lg;
+    color: $color-text-white;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-2xl;
+    opacity: 0.9;
+    color: #ffffff;
+  }
+
+  .cta-buttons {
+    @include flex(row, center, center, $spacing-lg);
+    flex-wrap: wrap;
+
+    .btn {
+      min-width: 200px;
+
+      &.btn-primary {
+        background: $color-text-white;
+        color: $color-primary;
+
+        &:hover {
+          background: $color-bg-light;
+          transform: translateY(-2px);
+        }
+      }
+
+      &.btn-secondary {
+        background: transparent;
+        border: 2px solid $color-text-white;
+        color: $color-text-white;
+
+        &:hover {
+          background: $color-text-white;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+// ==========================================
+// ANIMACIONES
+// ==========================================
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ==========================================
+// RESPONSIVE
+// ==========================================
+
+@include respond-down(md) {
+  .about-title {
+    font-size: $font-size-3xl;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+
+  .floating-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    margin: $spacing-md 0;
+    animation: none;
+  }
+
+  .about-cta {
+    padding: $spacing-2xl;
+
+    h3 {
+      font-size: $font-size-2xl;
+    }
   }
 }

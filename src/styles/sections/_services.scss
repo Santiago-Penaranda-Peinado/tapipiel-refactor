@@ -1,106 +1,295 @@
 // ============================================
-// SERVICIOS - TAPIPIEL
-// ============================================
-// Cards de servicios con grid responsive
+// SERVICES - TAPIPIEL
 // ============================================
 
-.services {
-  background-color: $color-bg-light;
-  
-  // ==========================================
-  // GRID DE SERVICIOS
-  // ==========================================
-  .services-grid {
-    @include grid-auto(280px, $spacing-xl);
-    margin-top: $spacing-2xl;
+.services-enhanced {
+  background: linear-gradient(135deg, $color-bg-light 0%, $color-bg-white 100%);
+  position: relative;
+}
+
+// ==========================================
+// HEADER MEJORADO
+// ==========================================
+
+.services-header {
+  margin-bottom: $spacing-3xl;
+
+  .services-badge {
+    display: inline-block;
+    padding: $spacing-sm $spacing-lg;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    color: $color-text-white;
+    border-radius: $border-radius-full;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: $spacing-lg;
+    @include box-shadow(sm);
+  }
+
+  .services-title {
+    font-size: $font-size-4xl;
+    color: $color-primary;
+    margin-bottom: $spacing-lg;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @include respond-to(md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .services-subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
   }
 }
 
 // ==========================================
-// CARD DE SERVICIO
+// GRID MEJORADO
 // ==========================================
 
-.service-card {
-  background-color: $color-bg-white;
-  border-radius: $border-radius-lg;
-  padding: $spacing-2xl $spacing-xl;
-  text-align: center;
-  
-  @include box-shadow(md);
+.services-grid-enhanced {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-xl;
+  }
+
+  @include respond-to(lg) {
+    gap: $spacing-2xl;
+  }
+}
+
+// ==========================================
+// CARD DE SERVICIO MEJORADA
+// ==========================================
+
+.service-card-enhanced {
+  background: $color-bg-white;
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  @include box-shadow(lg);
   @include transition(all, $transition-base);
-  
-  // Hover effect
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   &:hover {
     transform: translateY(-8px);
-    box-shadow: $shadow-xl;
-    
-    .service-icon {
-      transform: scale(1.1) rotate(5deg);
-      background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    @include box-shadow(xl);
+
+    .service-visual .service-badge {
+      transform: translateY(-2px);
+      @include box-shadow(md);
+    }
+
+    .service-image {
+      transform: scale(1.05);
     }
   }
-  
-  // ==========================================
-  // ICONO
-  // ==========================================
-  .service-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto $spacing-lg;
-    
-    @include flex-center;
-    
-    background: linear-gradient(135deg, $color-primary-light, $color-secondary);
-    border-radius: $border-radius-full;
-    
-    @include transition(all, $transition-base);
-    
-    svg {
-      width: 40px;
-      height: 40px;
-      color: $color-text-white;
-    }
+}
+
+// Sección visual con imagen
+.service-visual {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition(transform, $transition-slow);
   }
-  
-  // ==========================================
-  // TÍTULO
-  // ==========================================
-  h3 {
+
+  .service-badge {
+    position: absolute;
+    top: $spacing-lg;
+    left: $spacing-lg;
+    padding: $spacing-sm $spacing-md;
+    background: $color-bg-white;
     color: $color-primary;
-    font-size: $font-size-xl;
-    margin-bottom: $spacing-md;
+    border-radius: $border-radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    @include box-shadow(sm);
+    @include transition(all, $transition-base);
   }
-  
-  // ==========================================
-  // DESCRIPCIÓN
-  // ==========================================
-  p {
+}
+
+// Contenido del servicio
+.service-content {
+  padding: $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  h3 {
+    font-size: $font-size-xl;
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, $color-primary, $color-primary-light);
+      border-radius: 2px;
+    }
+  }
+
+  .service-description {
     color: $color-text-secondary;
     line-height: $line-height-relaxed;
-    margin-bottom: 0;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-base;
+    flex-grow: 0;
   }
-  
-  // ==========================================
-  // LISTAS
-  // ==========================================
-  ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    
-    li {
-      padding: $spacing-sm 0;
-      color: $color-text-secondary;
-      position: relative;
-      padding-left: $spacing-lg;
-      
-      &::before {
-        content: '✓';
-        position: absolute;
-        left: 0;
-        color: $color-primary;
-        font-weight: $font-weight-bold;
+}
+
+// Lista de características
+.service-features {
+  list-style: none;
+  margin-bottom: $spacing-xl;
+  flex-grow: 1;
+
+  li {
+    @include flex(row, flex-start, center);
+    gap: $spacing-md;
+    padding: $spacing-sm 0;
+    color: $color-text-secondary;
+
+    .feature-icon {
+      @include flex-center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      color: $color-text-white;
+      flex-shrink: 0;
+
+      svg {
+        width: 12px;
+        height: 12px;
       }
     }
+
+    span:last-child {
+      font-size: $font-size-sm;
+      line-height: $line-height-normal;
+    }
+  }
+}
+
+// Botón de servicio - ALTURA FIJA
+.service-cta {
+  margin-top: auto;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $color-border-light;
+
+  .btn-service {
+    @include flex(row, space-between, center);
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    color: $color-text-white;
+    border-radius: $border-radius-md;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    @include transition(all, $transition-base);
+    min-height: 52px; // Altura fija para consistencia
+
+    &:hover {
+      transform: translateX(4px);
+      @include box-shadow(md);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: transform $transition-base;
+    }
+
+    &:hover svg {
+      transform: translateX(2px);
+    }
+  }
+}
+
+// ==========================================
+// RESPONSIVE MEJORADO
+// ==========================================
+
+@include respond-down(md) {
+  .services-header {
+    .services-title {
+      font-size: $font-size-3xl;
+    }
+
+    .services-subtitle {
+      font-size: $font-size-base;
+    }
+  }
+
+  .service-content {
+    padding: $spacing-xl;
+  }
+
+  .service-visual {
+    height: 200px;
+  }
+
+  .service-features li {
+    padding: $spacing-xs 0;
+  }
+}
+
+@include respond-down(sm) {
+  .service-visual {
+    height: 180px;
+  }
+
+  .service-content {
+    padding: $spacing-lg;
+  }
+
+  .service-features {
+    margin-bottom: $spacing-lg;
+  }
+
+  .service-cta {
+    padding-top: $spacing-md;
+    
+    .btn-service {
+      min-height: 48px;
+      padding: $spacing-sm $spacing-md;
+    }
+  }
+}
+
+// Asegurar que todas las cards tengan la misma altura en grid
+@include respond-to(md) {
+  .services-grid-enhanced {
+    align-items: stretch;
+  }
+  
+  .service-card-enhanced {
+    min-height: 100%;
   }
 }
