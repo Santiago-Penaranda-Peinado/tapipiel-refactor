@@ -2,39 +2,344 @@
 // MATERIALES - TAPIPIEL
 // ============================================
 
-.materials {
-  background: $color-bg-light;
+.materials-modern {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
 }
 
-.materials-grid {
-  @include grid-auto(180px, $spacing-lg);
-  margin-top: $spacing-2xl;
+// ==========================================
+// HEADER MEJORADO
+// ==========================================
+
+.materials-header {
+  margin-bottom: $spacing-3xl;
+
+  .materials-badge {
+    display: inline-block;
+    padding: $spacing-sm $spacing-xl;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    color: $color-text-white;
+    border-radius: $border-radius-full;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: $spacing-xl;
+    @include box-shadow(md);
+  }
+
+  .materials-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @include respond-to(md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .materials-subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+  }
 }
+
+// ==========================================
+// GRID DE MATERIALES MEJORADO
+// ==========================================
+
+.materials-grid-modern {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// ==========================================
+// CARDS DE MATERIALES MEJORADAS
+// ==========================================
 
 .material-card {
   background: $color-bg-white;
-  border-radius: $border-radius-lg;
+  border-radius: $border-radius-xl;
   overflow: hidden;
-  @include box-shadow(sm);
-  @include transition(all, $transition-base);
-  text-align: center;
-  
+  @include box-shadow(lg);
+  @include transition(all, $transition-slow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: $shadow-xl;
+    transform: translateY(-12px);
+    @include box-shadow(2xl);
+
+    .material-image {
+      transform: scale(1.1);
+    }
+
+    .material-overlay {
+      opacity: 1;
+    }
+
+    .material-zoom {
+      transform: scale(1);
+    }
   }
-  
-  .material-image {
-    width: 100%;
-    height: 150px;
-    background: linear-gradient(135deg, $color-primary-light, $color-secondary);
-    // Background image placeholder: /assets/images/materials/*.jpg
-  }
-  
-  h3 {
-    padding: $spacing-lg;
-    color: $color-primary;
-    font-size: $font-size-lg;
-    margin: 0;
+
+  // Card destacada (última)
+  &.featured {
+    border: 2px solid $color-primary;
+
+    .material-content {
+      background: linear-gradient(135deg, $color-bg-white, $color-bg-light);
+    }
   }
 }
+
+// Sección visual con imagen
+.material-visual {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+
+  .material-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition(transform, $transition-slow);
+  }
+
+  .material-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    @include transition(all, $transition-base);
+    @include flex(row, space-between, flex-start);
+    padding: $spacing-lg;
+  }
+
+  .material-badge {
+    padding: $spacing-xs $spacing-md;
+    background: $color-bg-white;
+    color: $color-primary;
+    border-radius: $border-radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    @include box-shadow(sm);
+  }
+
+  .material-zoom {
+    width: 40px;
+    height: 40px;
+    background: $color-bg-white;
+    color: $color-primary;
+    border: none;
+    border-radius: $border-radius-full;
+    @include flex-center;
+    font-size: 16px;
+    cursor: pointer;
+    transform: scale(0);
+    @include transition(all, $transition-base);
+
+    &:hover {
+      background: $color-primary;
+      color: $color-text-white;
+    }
+  }
+}
+
+// Contenido de la card
+.material-content {
+  padding: $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+
+  .material-icon {
+    position: absolute;
+    top: -25px;
+    left: $spacing-2xl;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    border-radius: $border-radius-md;
+    @include flex-center;
+    color: $color-text-white;
+    font-size: 20px;
+    @include box-shadow(md);
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin: $spacing-md 0 $spacing-sm 0;
+    padding-top: $spacing-sm;
+  }
+
+  .material-description {
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-base;
+  }
+}
+
+// Lista de características
+.material-features {
+  list-style: none;
+  margin-bottom: $spacing-xl;
+  flex-grow: 1;
+
+  li {
+    @include flex(row, flex-start, center);
+    gap: $spacing-md;
+    padding: $spacing-xs 0;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+
+    i {
+      @include flex-center;
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, $color-primary, $color-primary-light);
+      border-radius: 50%;
+      color: $color-text-white;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// CTA para la card destacada
+.material-cta {
+  margin-top: auto;
+
+  .btn-material {
+    @include flex(row, space-between, center);
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    color: $color-text-white;
+    border-radius: $border-radius-md;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    @include transition(all, $transition-base);
+
+    &:hover {
+      transform: translateX(4px);
+      @include box-shadow(md);
+
+      i {
+        transform: translateX(3px);
+      }
+    }
+
+    i {
+      transition: transform $transition-base;
+    }
+  }
+}
+
+// ==========================================
+// RESPONSIVE MEJORADO
+// ==========================================
+
+@include respond-down(md) {
+  .materials-header {
+    .materials-title {
+      font-size: $font-size-3xl;
+    }
+
+    .materials-subtitle {
+      font-size: $font-size-base;
+    }
+  }
+
+  .material-visual {
+    height: 220px;
+  }
+
+  .material-content {
+    padding: $spacing-xl;
+
+    .material-icon {
+      left: $spacing-xl;
+    }
+  }
+}
+
+@include respond-down(sm) {
+  .materials-grid-modern {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+
+  .material-visual {
+    height: 200px;
+  }
+
+  .material-content {
+    padding: $spacing-lg;
+
+    .material-icon {
+      top: -20px;
+      left: $spacing-lg;
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+    }
+  }
+
+  .material-features {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+// Efectos de hover específicos para diferentes materiales
+.material-card:nth-child(1):hover { border-top: 4px solid #8b5cf6; } // Piel - Purple
+.material-card:nth-child(2):hover { border-top: 4px solid #10b981; } // Vinipiel - Emerald
+.material-card:nth-child(3):hover { border-top: 4px solid #f59e0b; } // Tela - Amber
+.material-card:nth-child(4):hover { border-top: 4px solid #ef4444; } // Piel Durazno - Red
+.material-card:nth-child(5):hover { border-top: 4px solid #06b6d4; } // Gamuza - Cyan
+.material-card:nth-child(6):hover { border-top: 4px solid #8b5cf6; } // Varios - Purple

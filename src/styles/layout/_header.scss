@@ -18,6 +18,12 @@
   
   @include transition(all, $transition-base);
   
+  // Cuando el menú móvil está activo, mantener el header visible
+  &.menu-open {
+    background-color: transparent;
+    border-bottom: none;
+  }
+  
   // ==========================================
   // ESTADO TOP (translúcido)
   // ==========================================
@@ -46,6 +52,21 @@
   // Logo invertido (blanco con negro)
   .logo {
     filter: invert(1) brightness(1.2);
+  }
+  
+  // ==========================================
+  // ESTADO MENÚ ABIERTO (móvil)
+  // ==========================================
+  &.menu-open {
+    // Hamburger blanco cuando el menú está abierto
+    .navbar-toggle span {
+      background-color: $color-text-white;
+    }
+    
+    // Logo invertido cuando el menú está abierto
+    .logo {
+      filter: invert(1) brightness(1.2);
+    }
   }
   
   // ==========================================
@@ -131,7 +152,8 @@
 // ==========================================
 
 .navbar-brand {
-  z-index: $z-index-sticky + 1;
+  // Z-index superior al menú móvil
+  z-index: $z-index-sticky + 2;
   
   .logo {
     height: 50px;
@@ -163,7 +185,8 @@
   height: 40px;
   padding: $spacing-sm;
   
-  z-index: $z-index-sticky + 1;
+  // Z-index superior al menú para que siempre sea clickeable
+  z-index: $z-index-sticky + 2;
   
   // Ocultar en desktop
   @include respond-to(md) {
@@ -207,36 +230,50 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; // Dynamic viewport height para móviles
     
-    background-color: rgba($color-primary, 0.98);
+    background-color: rgba($color-primary, 0.97);
     backdrop-filter: blur(10px);
     
     @include flex(column, center, center);
-    gap: $spacing-xl;
+    gap: $spacing-lg;
     
-    // Oculto por defecto
+    // Z-index justo debajo del logo y botón toggle
+    z-index: $z-index-sticky + 1;
+    
+    // Padding para evitar que toque los bordes
+    padding: $spacing-3xl $spacing-lg $spacing-2xl;
+    
+    // Oculto por defecto - desliza desde la derecha
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.95);
+    transform: translateX(100%);
     @include transition(all, $transition-base);
+    
+    // Prevenir interacción cuando está cerrado
+    pointer-events: none;
     
     // Estado activo
     &.active {
       opacity: 1;
       visibility: visible;
-      transform: scale(1);
+      transform: translateX(0);
+      pointer-events: auto;
+      z-index: 1022;
     }
     
     li {
+      list-style: none;
       opacity: 0;
       transform: translateY(20px);
       @include transition(all, $transition-base);
       
-      @for $i from 1 through 5 {
+      // Animar los 6 items del menú
+      @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
-          transition-delay: #{$i * 0.1}s;
+          transition-delay: #{$i * 0.08}s;
         }
       }
     }
@@ -248,11 +285,18 @@
     
     a {
       font-family: $font-primary;
-      font-size: $font-size-2xl;
+      font-size: $font-size-xl;
       font-weight: $font-weight-bold;
       color: $color-text-white;
       text-transform: uppercase;
       letter-spacing: 1px;
+      text-align: center;
+      
+      // Área de click más grande
+      display: block;
+      padding: $spacing-sm $spacing-md;
+      
+      @include transition(color, $transition-fast);
       
       &:hover {
         color: $color-secondary;

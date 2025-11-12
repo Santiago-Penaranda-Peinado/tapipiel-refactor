@@ -19,18 +19,38 @@ export function initNavigation() {
   }
   
   // ==========================================
+  // FUNCIÓN PARA CERRAR EL MENÚ
+  // ==========================================
+  
+  const closeMenu = () => {
+    navbarMenu.classList.remove('active');
+    navbarToggle.classList.remove('active');
+    header.classList.remove('menu-open');
+    navbarToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+  
+  const openMenu = () => {
+    navbarMenu.classList.add('active');
+    navbarToggle.classList.add('active');
+    header.classList.add('menu-open');
+    navbarToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // ==========================================
   // TOGGLE DEL MENÚ MÓVIL
   // ==========================================
   
-  navbarToggle.addEventListener('click', () => {
-    const isOpen = navbarMenu.classList.toggle('active');
-    navbarToggle.classList.toggle('active');
+  navbarToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevenir que se propague al document
+    const isOpen = navbarMenu.classList.contains('active');
     
-    // Actualizar aria-expanded para accesibilidad
-    navbarToggle.setAttribute('aria-expanded', isOpen);
-    
-    // Prevenir scroll cuando el menú está abierto
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
   
   // ==========================================
@@ -39,10 +59,7 @@ export function initNavigation() {
   
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      navbarMenu.classList.remove('active');
-      navbarToggle.classList.remove('active');
-      navbarToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      closeMenu();
     });
   });
   
@@ -55,10 +72,17 @@ export function initNavigation() {
     const isMenuOpen = navbarMenu.classList.contains('active');
     
     if (!isClickInside && isMenuOpen) {
-      navbarMenu.classList.remove('active');
-      navbarToggle.classList.remove('active');
-      navbarToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      closeMenu();
+    }
+  });
+  
+  // ==========================================
+  // CERRAR MENÚ CON TECLA ESC
+  // ==========================================
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navbarMenu.classList.contains('active')) {
+      closeMenu();
     }
   });
   
