@@ -2,6 +2,9 @@
 // ANIMACIÓN DE ESTADÍSTICAS - TAPIPIEL
 // ============================================
 
+// Importar imagen del CTA para que Vite la incluya en el build
+import ctaBgImage from '@assets/images/about/cta-bg.jpg';
+
 export function initAboutStats() {
   // Animar contadores
   const statNumbers = document.querySelectorAll('.stat-number');
@@ -27,7 +30,8 @@ export function initAboutStats() {
   if (ctaSection) {
     const bgImage = ctaSection.getAttribute('data-bg');
     if (bgImage) {
-      ctaSection.style.backgroundImage = `url('${bgImage}')`;
+      // Usar la imagen importada para producción
+      ctaSection.style.backgroundImage = `url('${ctaBgImage}')`;
     }
   }
 }

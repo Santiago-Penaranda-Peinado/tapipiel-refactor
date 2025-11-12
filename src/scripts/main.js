@@ -8,6 +8,7 @@
 import '../styles/main.scss';
 
 // Importar módulos
+import { initPreloader } from './modules/preloader.js';
 import { initNavigation } from './modules/navigation.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';
 import { initScrollTop } from './modules/scroll-top.js';
@@ -24,6 +25,9 @@ import { initAboutStats } from './modules/about-stats.js';
 function init() {
   console.log(' Tapipiel - Sitio web iniciado');
   
+  // Preloader primero
+  initPreloader();
+
   // Inicializar módulos
   initNavigation();
   initSmoothScroll();

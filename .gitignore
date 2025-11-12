@@ -1,31 +1,99 @@
-# Node
-node_modules
-npm-debug.log
-yarn-error.log
+# ============================================
+# GITIGNORE - TAPIPIEL PROJECT
+# ============================================
+
+# ==========================================
+# NODE / NPM
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# Build
-dist
-build
+# ==========================================
+# BUILD / DIST (Archivos compilados)
+# ==========================================
+dist/
+dist-ssr/
+build/
+.output/
+.vite/
+*.local
 
-# Environment
+# Archivos comprimidos de build
+*.zip
+tapipiel-dist.zip
+
+# ==========================================
+# ENVIRONMENT VARIABLES
+# ==========================================
 .env
 .env.local
+.env.development.local
+.env.test.local
 .env.production
+.env.production.local
 
-# IDE
-.vscode
-.idea
+# ==========================================
+# IDE / EDITORS
+# ==========================================
+.vscode/
+.idea/
 *.swp
 *.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
 
-# OS
+# ==========================================
+# OS FILES
+# ==========================================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
 
-# Logs
-logs
+# ==========================================
+# LOGS
+# ==========================================
+logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
-# Testing
-coverage
+# ==========================================
+# TESTING
+# ==========================================
+coverage/
+*.lcov
+.nyc_output
+
+# ==========================================
+# TEMP / CACHE
+# ==========================================
+*.cache
+.cache/
+.temp/
+.tmp/
+*.tmp
+
+# ==========================================
+# DOCKER (opcional)
+# ==========================================
+# Descomenta si no quieres versionar estos archivos
+# docker-compose.override.yml
+# .dockerignore

@@ -9,6 +9,20 @@
 // - Transiciones suaves
 // ============================================
 
+// Importar imágenes del slider para que Vite las incluya en el build
+import slide1 from '@assets/images/hero/slide-1.jpg';
+import slide2 from '@assets/images/hero/slide-2.jpg';
+import slide3 from '@assets/images/hero/slide-3.jpg';
+import slide4 from '@assets/images/hero/slide-4.jpg';
+
+// Mapeo de imágenes
+const slideImages = {
+  'src/assets/images/hero/slide-1.jpg': slide1,
+  'src/assets/images/hero/slide-2.jpg': slide2,
+  'src/assets/images/hero/slide-3.jpg': slide3,
+  'src/assets/images/hero/slide-4.jpg': slide4,
+};
+
 /**
  * Inicializa el slider del hero
  */
@@ -180,12 +194,15 @@ export function initHeroSlider() {
   
   /**
    * Aplica las imágenes de fondo desde el atributo data-bg
+   * Usa las imágenes importadas para producción
    */
   function applyBackgroundImages() {
     slides.forEach(slide => {
       const bgImage = slide.getAttribute('data-bg');
       if (bgImage) {
-        slide.style.backgroundImage = `url('${bgImage}')`;
+        // Usar la imagen importada si existe, sino usar la ruta directa
+        const imagePath = slideImages[bgImage] || bgImage;
+        slide.style.backgroundImage = `url('${imagePath}')`;
       }
     });
   }

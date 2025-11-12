@@ -48,6 +48,14 @@ export default defineConfig({
       },
     },
     
+    // Tamaño límite para inline base64 (imágenes pequeñas)
+    // Si es menor a 4KB, se convierte a base64 inline
+    // Si es mayor, se copia como archivo separado
+    assetsInlineLimit: 4096, // 4KB
+    
+    // Chunk splitting (división de código para mejor caching)
+    chunkSizeWarningLimit: 1000, // Advertencia si un chunk supera 1MB
+    
     // Rollup options (configuración avanzada del bundler)
     rollupOptions: {
       input: {
@@ -58,28 +66,29 @@ export default defineConfig({
       
       output: {
         // Nombres de archivos en producción
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
           // Organiza assets por tipo de archivo
           const info = assetInfo.name.split('.');
           const ext = info[info.length - 1];
           
           if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(ext)) {
-            return `assets/images/[name]-[hash][extname]`;
+            return `assets/[name]-[hash][extname]`;
           }
           
           if (/woff|woff2|ttf|eot/i.test(ext)) {
             return `assets/fonts/[name]-[hash][extname]`;
           }
           
-          return `assets/[ext]/[name]-[hash][extname]`;
+          if (/css/i.test(ext)) {
+            return `assets/[name]-[hash][extname]`;
+          }
+          
+          return `assets/[name]-[hash][extname]`;
         },
       },
     },
-    
-    // Chunk splitting (división de código para mejor caching)
-    chunkSizeWarningLimit: 1000, // Advertencia si un chunk supera 1MB
   },
 
   // ==========================================
@@ -121,14 +130,6 @@ export default defineConfig({
   // ASSETS (IMÁGENES, FUENTES, ETC.)
   // ==========================================
   assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.webp'],
-  
-  // Tamaño límite para inline base64 (imágenes pequeñas)
-  // Si es menor a 4KB, se convierte a base64 inline
-  // Si es mayor, se copia como archivo separado
-  build: {
-    ...{}, // Mantiene las opciones anteriores de build
-    assetsInlineLimit: 4096, // 4KB
-  },
 
   // ==========================================
   // PLUGINS (EXTENSIONES DE VITE)
