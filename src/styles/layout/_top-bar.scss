@@ -1,0 +1,161 @@
+// ============================================
+// TOP BAR MODERNA - TAPIPIEL
+// ============================================
+// Barra superior que SOLO aparece cuando estás arriba del todo
+// Se oculta al hacer scroll (cualquier dirección)
+// DESACTIVADA EN MÓVIL (solo visible en tablets y desktop)
+// ============================================
+
+.top-bar-modern {
+  // Ocultar completamente en móvil
+  display: none;
+  
+  // Mostrar solo en tablet y desktop
+  @include respond-to(md) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: $color-text-white;
+    z-index: $z-index-fixed; // 1030 - Por encima del header
+    padding: $spacing-xs 0;
+    font-size: $font-size-sm;
+    border-bottom: 1px solid rgba($color-text-white, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s $ease-in-out;
+    height: 40px; // Altura fija
+    
+    // Ocultar al hacer scroll
+    &.hidden {
+      transform: translateY(-100%);
+    }
+
+    .container {
+      max-width: 100%;
+      padding: 0 $spacing-lg;
+    }
+  }
+}
+
+// ==========================================
+// CONTENIDO DE LA TOP BAR
+// ==========================================
+
+.top-bar-content-modern {
+  @include flex(row, space-between, center);
+  gap: $spacing-lg;
+}
+
+// ==========================================
+// INFORMACIÓN DE CONTACTO
+// ==========================================
+
+.contact-info-minimal {
+  @include flex(row, flex-start, center);
+  gap: $spacing-xl;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  @include flex(row, flex-start, center);
+  gap: $spacing-sm;
+  color: rgba($color-text-white, 0.9);
+  text-decoration: none;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  @include transition(all, $transition-fast);
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  font-size: $font-size-xs;
+
+  i {
+    color: $color-primary-light;
+    font-size: 12px;
+    width: 14px;
+    text-align: center;
+    @include transition(all, $transition-fast);
+  }
+
+  .contact-text {
+    font-size: $font-size-xs;
+    letter-spacing: 0.3px;
+  }
+
+  &:hover {
+    color: $color-text-white;
+    background: rgba($color-primary, 0.2);
+
+    i {
+      color: $color-text-white;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// ==========================================
+// TRUST BADGES MINIMALISTAS
+// ==========================================
+
+.trust-minimal {
+  @include flex(row, flex-end, center);
+  gap: $spacing-lg;
+
+  .trust-item {
+    @include flex(row, flex-start, center);
+    gap: $spacing-xs;
+    color: rgba($color-text-white, 0.7);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    i {
+      color: $color-primary-light;
+      font-size: 10px;
+    }
+
+    span {
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+// ==========================================
+// AJUSTES DEL HEADER
+// ==========================================
+// El header SIEMPRE está en top: 0, pero se mueve hacia abajo
+// cuando la top-bar está visible (usando margin-top)
+
+.header {
+  // Por defecto, el header está en top: 0
+  top: 0;
+  
+  @include respond-to(md) {
+    // Cuando la top-bar está visible, empujar el header hacia abajo
+    &.top-bar-visible {
+      margin-top: 40px;
+      transition: margin-top 0.3s $ease-in-out;
+    }
+    
+    // Transición suave cuando la top-bar se oculta
+    transition: margin-top 0.3s $ease-in-out;
+  }
+}
+
+// ==========================================
+// RESPONSIVE DESIGN - SOLO PARA DESKTOP
+// ==========================================
+
+@include respond-to(lg) {
+  .top-bar-content-modern {
+    gap: $spacing-lg;
+  }
+
+  .contact-info-minimal {
+    gap: $spacing-xl;
+  }
+
+  .trust-minimal {
+    gap: $spacing-lg;
+  }
+}

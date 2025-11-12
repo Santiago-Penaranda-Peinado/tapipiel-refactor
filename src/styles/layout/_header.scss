@@ -362,10 +362,13 @@
 // ==========================================
 
 // Agregar padding al body para que el contenido no quede debajo del header
+// El padding es solo para el header (la top-bar se maneja con margin-top del header)
+// En móvil: solo el header (80px)
+// En desktop: solo el header (90px) - la top-bar añade margin-top al header
 body {
   padding-top: 80px;
   
   @include respond-to(md) {
-    padding-top: 90px;
+    padding-top: 90px; // Solo el header
   }
 }

@@ -8,6 +8,11 @@
   <title>Tapipiel - Tapicería y Limpieza de Muebles en CDMX y Cuernavaca | 50+ Años de Experiencia</title>
   <meta name="description" content="Empresa mexicana con más de 50 años de experiencia en tapicería y limpieza de muebles de piel. Servicios residenciales, comerciales y de oficina en CDMX y Cuernavaca.">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/src/assets/images/logo/logotapipiel.png">
+  <link rel="shortcut icon" type="image/png" href="/src/assets/images/logo/logotapipiel.png">
+  <link rel="apple-touch-icon" href="/src/assets/images/logo/logotapipiel.png">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -17,6 +22,41 @@
 </head>
 
 <body>
+    <!-- TOP BAR MEJORADA -->
+    <div class="top-bar-modern">
+        <div class="container">
+            <div class="top-bar-content-modern">
+                <!-- Información de contacto -->
+                <div class="contact-info-minimal">
+                    <a href="tel:+525633421772" class="contact-link">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="contact-text">CDMX: 56 3342 1772</span>
+                    </a>
+                    <a href="tel:+527779862576" class="contact-link">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="contact-text">Cuernavaca: 777 986 2576</span>
+                    </a>
+                    <a href="mailto:ventas@tapipiel.com.mx" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span class="contact-text">ventas@tapipiel.com.mx</span>
+                    </a>
+                </div>
+
+                <!-- Trust badges minimalistas -->
+                <div class="trust-minimal">
+                    <span class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Calidad Garantizada</span>
+                    </span>
+                    <span class="trust-item">
+                        <i class="fas fa-award"></i>
+                        <span>+50 Años Experiencia</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
   <!-- HEADER -->
   <header class="header">
     <div class="container">
@@ -637,7 +677,7 @@
                 </article>
 
                 <!-- Piel Durazno -->
-                <article class="material-card">
+                <!--<article class="material-card">
                     <div class="material-visual">
                         <img src="/src/assets/images/materials/durazno.jpg" alt="Piel durazno texturizada" class="material-image">
                         <div class="material-overlay">
@@ -661,10 +701,10 @@
                             <li><i class="fas fa-check"></i> Exclusivo</li>
                         </ul>
                     </div>
-                </article>
+                </article>-->
 
                 <!-- Gamuza -->
-                <article class="material-card">
+                <!--<article class="material-card">
                     <div class="material-visual">
                         <img src="/src/assets/images/materials/gamuza.jpg" alt="Gamuza natural y sintética" class="material-image">
                         <div class="material-overlay">
@@ -688,10 +728,10 @@
                             <li><i class="fas fa-check"></i> Confort máximo</li>
                         </ul>
                     </div>
-                </article>
+                </article>-->
 
                 <!-- Más materiales -->
-                <article class="material-card featured">
+                <!--<article class="material-card featured">
                     <div class="material-visual">
                         <img src="/src/assets/images/materials/varios.jpg" alt="Variedad de materiales adicionales" class="material-image">
                         <div class="material-overlay">
@@ -722,7 +762,7 @@
                     </div>
                 </article>
             </div>
-        </div>
+        </div>-->
     </section>
 
     <!-- CONTACTO -->
@@ -826,7 +866,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="info-content">
-                                <h4>📍 Nuestras Ubicaciones</h4>
+                                <h4>Nuestras Ubicaciones</h4>
                                 <div class="location-item">
                                     <strong>CDMX</strong>
                                     <p>Priv. Rancho de La Cruz 36<br>Col. Jamaica, C.P. 15800</p>
@@ -844,7 +884,7 @@
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div class="info-content">
-                                <h4>📞 Llamanos Directo</h4>
+                                <h4>Llamanos Directo</h4>
                                 <div class="phone-item">
                                     <a href="tel:+525633421772" class="phone-link">
                                         <span class="phone-number">56 3342 1772</span>
@@ -872,7 +912,7 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="info-content">
-                                <h4>✉️ Correo y Horarios</h4>
+                                <h4>Correo y Horarios</h4>
                                 <div class="email-item">
                                     <a href="mailto:ventas@tapipiel.com.mx" class="email-link">
                                         <i class="fas fa-envelope"></i>
@@ -918,7 +958,7 @@
               <div class="footer-col-modern">
                   <div class="footer-brand">
                       <div class="footer-logo-modern">
-                          <h3>TAPIPIEL</h3>
+                          <img src="src/assets/images/logo/logotapipiel.png" alt="Tapipiel Logo" class="footer-logo-img">
                           <span class="logo-subtitle">Expertos en Tapicería</span>
                       </div>
                       <p class="brand-description">
@@ -969,11 +1009,11 @@
                               <i class="fas fa-phone-alt"></i>
                           </div>
                           <div class="contact-details">
-                              <a href="tel:+525633421772" class="phone-link">
+                              <a href="tel:+525633421772" class="phone-link" id="phone-footer">
                                   <span class="phone-number">56 3342 1772</span>
                                   <span class="phone-label">CDMX</span>
                               </a>
-                              <a href="tel:+527779862576" class="phone-link">
+                              <a href="tel:+527779862576" class="phone-link" id="phone-footer">
                                   <span class="phone-number">777 986 2576</span>
                                   <span class="phone-label">Cuernavaca</span>
                               </a>
@@ -984,7 +1024,7 @@
                           <div class="contact-icon">
                               <i class="fas fa-envelope"></i>
                           </div>
-                          <div class="contact-details">
+                          <div class="contact-details" id="mail-footer">
                               <a href="mailto:ventas@tapipiel.com.mx" class="email-link">
                                   ventas@tapipiel.com.mx
                               </a>

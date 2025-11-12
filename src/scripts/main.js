@@ -14,6 +14,7 @@ import { initSmoothScroll } from './modules/smooth-scroll.js';
 import { initScrollTop } from './modules/scroll-top.js';
 import { initHeroSlider } from './modules/hero-slider.js';
 import { initAboutStats } from './modules/about-stats.js';  
+import { initTopBar } from './modules/top-bar.js';
 
 // ==========================================
 // INICIALIZACIÓN DE LA APLICACIÓN
@@ -34,6 +35,7 @@ function init() {
   initScrollTop();
   initHeroSlider();
   initAboutStats();
+  initTopBar();
 
   console.log('Todos los módulos cargados correctamente');
 }
