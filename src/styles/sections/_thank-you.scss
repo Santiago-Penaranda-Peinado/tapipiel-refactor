@@ -113,3 +113,11 @@
     margin-top: $spacing-xl;
   }
 }
+
+#btn-form-thnks{
+  background: linear-gradient(135deg, #9300b8 0%, #00abc2 100%);
+}
+#btn-form-thnks:hover{
+  background: linear-gradient(135deg, #7a0090 0%, #008494 100%);
+  color: #fff;
+}

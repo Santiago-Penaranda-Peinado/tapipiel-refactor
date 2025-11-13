@@ -2,9 +2,14 @@
 
 Sitio web moderno y profesional para **Tapipiel**, empresa líder en tapicería y limpieza de muebles con más de 50 años de experiencia en CDMX y Cuernavaca.
 
+## 🎯 Estado del Proyecto: ✅ COMPLETADO
+
+**Versión:** 1.0.0  
+**Última actualización:** Noviembre 13, 2025
+
 ---
 
-## Tabla de Contenidos
+## 📋 Tabla de Contenidos
 
 - [Características](#-características)
 - [Stack Tecnológico](#-stack-tecnológico)
@@ -12,23 +17,38 @@ Sitio web moderno y profesional para **Tapipiel**, empresa líder en tapicería 
 - [Instalación con Docker](#-instalación-con-docker)
 - [Comandos Disponibles](#-comandos-disponibles)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
+- [SEO y Optimización](#-seo-y-optimización)
 - [Guía de Desarrollo](#-guía-de-desarrollo)
 - [Despliegue](#-despliegue)
+- [Verificación Post-Deployment](#-verificación-post-deployment)
+- [Solución de Problemas](#-solución-de-problemas)
 - [Información de Contacto](#-información-de-contacto)
 
 ---
 
-## Características
+## ✨ Características
 
-- ✅ **100% basado en Docker** - No requiere Node.js instalado localmente
-- ✅ **Vite + SCSS** - Build rápido y desarrollo instantáneo con HMR
-- ✅ **Arquitectura modular** - Código organizado y mantenible
-- ✅ **SEO optimizado** - Meta tags, Schema.org, Open Graph
-- ✅ **Responsive design** - Mobile-first, adaptable a todos los dispositivos
-- ✅ **Accesibilidad** - ARIA labels, navegación por teclado
-- ✅ **Performance** - Lazy loading, code splitting, optimización de assets
+### Funcionalidades Principales
+- ✅ **Navegación responsive** - Menú adaptable con hamburger menu en móvil
+- ✅ **Hero slider** - 4 slides automáticos con controles
+- ✅ **Estadísticas animadas** - Contadores en sección "Nosotros"
+- ✅ **3 Categorías de servicios** - Residencial, Oficina, Restauración
+- ✅ **Proceso de limpieza** - 6 pasos detallados
+- ✅ **Materiales premium** - Catálogo de materiales
+- ✅ **Formulario de contacto** - Con Google reCAPTCHA
 - ✅ **Botones flotantes** - WhatsApp y teléfono siempre visibles
 - ✅ **Smooth scroll** - Navegación fluida entre secciones
+- ✅ **Preloader animado** - Carga inicial elegante
+- ✅ **Popup del Buen Fin** - Promoción especial con scroll al formulario
+### Tecnología y Performance
+- ✅ **100% basado en Docker** - No requiere Node.js instalado localmente
+- ✅ **Vite + SCSS** - Build rápido (8.45s) y desarrollo instantáneo con HMR
+- ✅ **Arquitectura modular** - Código organizado y mantenible
+- ✅ **SEO completo** - Meta tags, Schema.org, Open Graph, Twitter Cards, robots.txt, sitemap.xml
+- ✅ **Responsive design** - Mobile-first, adaptable a todos los dispositivos
+- ✅ **Accesibilidad** - ARIA labels, navegación por teclado, roles semánticos
+- ✅ **Performance optimizado** - Minificación, code splitting, cache busting, gzip ready
+- ✅ **Build optimizado** - HTML 9.89KB, CSS 11.15KB, JS 3.72KB (gzipped)
 
 ---
 
@@ -291,6 +311,87 @@ function init() {
 
 ---
 
+---
+
+## 🎉 Popup del Buen Fin
+
+### Características
+- **Colores oficiales:** Rojo profundo (#540000) y dorado (#FFD700)
+- **Promoción destacada:** "12 MESES SIN INTERESES"
+- **Timing:** Aparece a los 2 segundos de cargar
+- **Frecuencia:** Se muestra solo 1 vez por sesión
+- **CTA:** Scroll suave al formulario de contacto
+- **Responsive:** Adaptado a móvil, tablet y desktop
+- **Accesible:** ARIA labels, cierre con ESC, click fuera
+
+### Archivos
+- `src/scripts/modules/popup-promo.js` - Lógica del popup
+- `src/styles/components/_popup-promo.scss` - Estilos Buen Fin
+
+### Controles para Testing
+```javascript
+// Forzar mostrar popup
+localStorage.setItem('buenFinPopupOn', '1')
+
+// Forzar ocultar popup
+localStorage.setItem('buenFinPopupOff', '1')
+
+// Limpiar sesión (volver a mostrar)
+sessionStorage.removeItem('buenFinPopupShown')
+```
+
+### Configuración de Fechas (Opcional)
+Para limitar el popup a fechas específicas del Buen Fin, edita `src/scripts/modules/popup-promo.js`:
+
+```javascript
+// Ejemplo: Limitar del 15 al 18 de noviembre
+const START_DATE = new Date('2025-11-15T00:00:00-06:00');
+const END_DATE = new Date('2025-11-18T23:59:59-06:00');
+```
+
+---
+
+## 🔍 SEO y Optimización
+
+### Meta Tags Implementados
+- ✅ Title optimizado con keywords (75 caracteres)
+- ✅ Meta description atractiva (155 caracteres)
+- ✅ Keywords relevantes para la industria
+- ✅ Canonical URL
+- ✅ Theme color (#00008b)
+- ✅ Robots: index, follow
+
+### Open Graph (Facebook/LinkedIn)
+- ✅ og:type, og:url, og:title, og:description
+- ✅ og:image para compartir en redes
+- ✅ og:locale (es_MX)
+- ✅ og:site_name
+
+### Twitter Cards
+- ✅ twitter:card (summary_large_image)
+- ✅ twitter:title, twitter:description, twitter:image
+
+### Structured Data (JSON-LD)
+- ✅ Schema.org LocalBusiness completo
+- ✅ 2 ubicaciones (CDMX y Cuernavaca)
+- ✅ Horarios de atención
+- ✅ Catálogo de 4 servicios
+- ✅ Coordenadas geográficas
+- ✅ Links a redes sociales
+
+### Archivos SEO
+- ✅ `public/robots.txt` - Instrucciones para crawlers
+- ✅ `public/sitemap.xml` - 8 URLs con prioridades
+
+### Herramientas de Validación
+- **Google PageSpeed Insights:** https://pagespeed.web.dev/
+- **Google Rich Results Test:** https://search.google.com/test/rich-results
+- **Facebook Sharing Debugger:** https://developers.facebook.com/tools/debug/
+- **Twitter Card Validator:** https://cards-dev.twitter.com/validator
+- **Schema Validator:** https://validator.schema.org/
+
+---
+
 ##  Información de Contacto de Tapipiel
 
 ### Teléfonos
@@ -314,35 +415,133 @@ Ciudad de México
 
 ##  Despliegue
 
-### Build para producción
+### 📦 Preparar Build de Producción
 
 ```powershell
-# Construir proyecto
-docker-compose build prod
+# Con Docker (recomendado)
+docker-compose exec dev npm run build
 
-# Los archivos optimizados estarán en /dist
+# Sin Docker
+npm run build
 ```
 
-### Opciones de hosting
+**Resultado:** Archivos optimizados en `dist/` (HTML 9.89KB, CSS 11.15KB, JS 3.72KB gzipped)
 
-El proyecto puede desplegarse en:
+### Opciones de Deployment
 
-- **Netlify** (Recomendado)
-- **Vercel**
-- **GitHub Pages**
-- **Servidor propio con Nginx**
+#### Opción 1: Hosting Tradicional (cPanel/FTP)
 
-### Ejemplo con Netlify
+```powershell
+# 1. Crear ZIP
+Compress-Archive -Path "dist\*" -DestinationPath "tapipiel-produccion.zip" -Force
 
-1. Conectar repositorio de GitHub
-2. Configurar build:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `dist`
-3. Deploy automático con cada push
+# 2. Subir a cPanel
+# - File Manager → public_html/
+# - Upload ZIP → Extract
+# - Configurar .htaccess (ver sección siguiente)
+```
+
+**Configurar .htaccess (Recomendado):**
+```apache
+# Habilitar compresión Gzip
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>
+
+# Cache de archivos estáticos
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Headers de seguridad
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Forzar HTTPS (recomendado)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
+
+#### Opción 2: Netlify (Rápido y Gratis)
+
+```powershell
+# Instalar CLI
+npm install -g netlify-cli
+
+# Deploy a producción
+netlify deploy --prod --dir=dist
+```
+
+#### Opción 3: Vercel
+
+```powershell
+# Instalar CLI
+npm install -g vercel
+
+# Deploy
+vercel --prod
+```
+
+### Configuración del Formulario
+
+**Requisitos del servidor:**
+- PHP 7.4+
+- Extensión `mail` o SMTP habilitado
+- PHPMailer (ya incluido en `public/phpmailer/`)
+
+**Verificar email destino en `public/envio.php`:**
+```php
+$para = "ventas@tapipiel.com.mx";
+```
+
+**Google reCAPTCHA:** Verificar dominio autorizado en https://www.google.com/recaptcha/admin
 
 ---
 
-##  Notas Importantes
+## ✅ Verificación Post-Deployment
+
+### Funcionalidad Básica
+- [ ] Página principal carga correctamente
+- [ ] Navegación funciona (desktop + móvil)
+- [ ] Hero slider se mueve automáticamente
+- [ ] Estadísticas se animan al hacer scroll
+- [ ] Formulario envía emails
+- [ ] Teléfonos y WhatsApp son clickeables
+- [ ] Botones flotantes funcionan
+
+### Popup del Buen Fin
+- [ ] Aparece a los 2 segundos
+- [ ] Colores correctos (rojo/dorado)
+- [ ] Texto: "12 MESES SIN INTERESES"
+- [ ] Botón lleva a #contacto
+- [ ] Se cierra correctamente
+- [ ] No aparece de nuevo en la sesión
+
+### SEO
+- [ ] `robots.txt` accesible: `https://tudominio.com/robots.txt`
+- [ ] `sitemap.xml` accesible: `https://tudominio.com/sitemap.xml`
+- [ ] Title tag en pestaña del navegador
+- [ ] Meta description en resultados de búsqueda
+- [ ] Open Graph: Probar en Facebook Debugger
+- [ ] Twitter Cards: Probar en Twitter Validator
+
+### Performance
+- [ ] Página carga < 3 segundos
+- [ ] Responsive en móvil, tablet, desktop
+- [ ] Imágenes optimizadas
+- [ ] Sin errores en consola
+
+---
+
+## 🐛 Solución de Problemas
 
 ### Hot Reload en Docker
 
@@ -364,30 +563,38 @@ docker-compose down -v
 docker-compose up dev --build
 ```
 
-### Problemas Comunes
+### El popup no aparece
+1. Abre consola (F12) y verifica errores
+2. Limpia sessionStorage: `sessionStorage.clear()`
+3. Recarga: Ctrl + Shift + R
 
-**❌ Error: "Address already in use"**
+### Imágenes no cargan en producción
+- Verifica que estén en `dist/assets/`
+- Comprueba rutas (sin `/src/`)
+- Revisa permisos: 644 archivos, 755 carpetas
 
-Otro proceso está usando el puerto 5173:
+### Formulario no envía
+1. Verifica `envio.php` está en la raíz
+2. PHP habilitado en servidor
+3. Revisa logs del servidor
+4. Verifica reCAPTCHA en Google Console
 
+### Error: "Address already in use"
 ```powershell
 # Windows
 netstat -ano | findstr :5173
 taskkill /PID <numero_pid> /F
-
-# Cambiar puerto en docker-compose.yml:
-ports:
-  - "5174:5173"
 ```
 
-**❌ Error: "Cannot find module"**
+### Warnings de SASS en build
+Los warnings de deprecación (`@import`, división `/`) son normales y **no afectan** el funcionamiento. Pueden ignorarse.
 
-Las dependencias no se instalaron correctamente:
+---
 
-```powershell
-docker-compose down -v
-docker-compose up dev --build
-```
+## 📚 Documentación Adicional
+
+Para información detallada sobre compilación y optimizaciones, consulta:
+- **[BUILD.md](BUILD.md)** - Guía completa de compilación
 
 ---
 

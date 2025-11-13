@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Página principal -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Sección Inicio -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/#inicio</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Sección Servicios -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/#servicios</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Sección Limpieza -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/#limpieza</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Sección Nosotros -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/#nosotros</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Sección Materiales -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/#materiales</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Sección Contacto -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/#contacto</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Página de agradecimiento -->
+  <url>
+    <loc>https://www.tapipiel.com.mx/thank-you.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

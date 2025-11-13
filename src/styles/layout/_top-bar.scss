@@ -44,7 +44,7 @@
 // ==========================================
 
 .top-bar-content-modern {
-  @include flex(row, space-between, center);
+  @include flex(row, right, center);
   gap: $spacing-lg;
 }
 

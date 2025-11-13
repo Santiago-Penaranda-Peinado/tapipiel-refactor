@@ -15,6 +15,8 @@ import { initScrollTop } from './modules/scroll-top.js';
 import { initHeroSlider } from './modules/hero-slider.js';
 import { initAboutStats } from './modules/about-stats.js';  
 import { initTopBar } from './modules/top-bar.js';
+import { initContactForm } from './modules/form.js';
+import { initPopupPromo } from './modules/popup-promo.js';
 
 // ==========================================
 // INICIALIZACIÓN DE LA APLICACIÓN
@@ -36,6 +38,8 @@ function init() {
   initHeroSlider();
   initAboutStats();
   initTopBar();
+  initContactForm();
+  initPopupPromo();
 
   console.log('Todos los módulos cargados correctamente');
 }

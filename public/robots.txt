@@ -1,0 +1,12 @@
+# robots.txt - Tapipiel
+# Este archivo indica a los motores de búsqueda qué pueden rastrear
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.tapipiel.com.mx/sitemap.xml
+
+# Bloquear rutas administrativas o privadas (si las hubiera)
+# Disallow: /admin/
+# Disallow: /private/

@@ -24,7 +24,22 @@ $recaptcha_secret = '6LeOsnApAAAAAD-nMe2aDb9X2liNEnjuUHDWP9Nm';
 // ==========================================
 // VALIDACIÓN DE RECAPTCHA
 // ==========================================
-if(empty($_POST['g-recaptcha-response'])) {
+// Detección de solicitud AJAX
+$isAjax = (
+    (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+    || isset($_POST['ajax'])
+);
+
+function respondJson($payload) {
+    header('Content-Type: application/json');
+    echo json_encode($payload);
+    exit;
+}
+
+if (empty($_POST['g-recaptcha-response'])) {
+    if ($isAjax) {
+        respondJson(['success' => false, 'error' => 'Por favor completa el reCAPTCHA.']);
+    }
     die('Error: Se ha detectado un robot (Respuesta vacía). Por favor, complete el captcha.');
 }
 
@@ -33,6 +48,9 @@ $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?s
 $g_response = json_decode($response);
 
 if ($g_response->success !== true) {
+    if ($isAjax) {
+        respondJson(['success' => false, 'error' => 'Verificación reCAPTCHA fallida. Intenta nuevamente.']);
+    }
     die('Error: Se ha detectado un robot (Verificación fallida). Por favor, intente nuevamente.');
 }
 
@@ -77,6 +95,9 @@ if (empty($mensaje)) {
 
 // Si hay errores, mostrarlos y detener
 if (!empty($errores)) {
+    if ($isAjax) {
+        respondJson(['success' => false, 'error' => implode(' ', $errores)]);
+    }
     echo "<h3>Errores en el formulario:</h3><ul>";
     foreach ($errores as $error) {
         echo "<li>$error</li>";
@@ -231,13 +252,17 @@ try {
 
     // Enviar
     $mail->send();
-    
-    // Redirección a página de agradecimiento
+
+    if ($isAjax) {
+        respondJson(['success' => true, 'redirect' => '/thank-you.html']);
+    }
     header("Location: /thank-you.html");
     exit;
 
 } catch (Exception $e) {
-    // Error en el envío
+    if ($isAjax) {
+        respondJson(['success' => false, 'error' => 'Error al enviar el mensaje.']);
+    }
     echo "
     <!DOCTYPE html>
     <html lang='es'>
