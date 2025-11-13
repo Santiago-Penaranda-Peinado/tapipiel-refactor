@@ -317,10 +317,13 @@
 
   .phone-label {
     font-size: $font-size-xs;
-    background: $color-bg-light;
     padding: 2px $spacing-xs;
     border-radius: $border-radius-sm;
   }
+}
+
+#email-contact-zone {
+  color: #000000 !important;
 }
 
 .whatsapp-cta {

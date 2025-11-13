@@ -285,7 +285,7 @@
 }
 
 #phone-footer{
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 // ==========================================
@@ -518,4 +518,31 @@
   .footer-links-bottom {
     justify-content: center !important;
   }
+}
+/* Teléfonos en la sección de CONTACTO (fondo blanco - texto oscuro) */
+.contact-section-phone .phone-link {
+  color: #2c3e50 !important;
+}
+
+.contact-section-phone .phone-number {
+  color: #2c3e50 !important;
+  font-weight: 600;
+}
+
+.contact-section-phone .phone-label {
+  color: #666 !important;
+}
+
+/* Teléfonos en el FOOTER (fondo oscuro - texto claro) */
+.footer-phone-link {
+  color: #ffffff !important;
+}
+
+.footer-phone-link .phone-number {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.footer-phone-link .phone-label {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
