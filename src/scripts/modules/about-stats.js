@@ -3,7 +3,7 @@
 // ============================================
 
 // Importar imagen del CTA para que Vite la incluya en el build
-import ctaBgImage from '@assets/images/about/cta-bg.jpg';
+import ctaBgImage from '@assets/images/about/cta-bg.webp';
 
 export function initAboutStats() {
   // Animar contadores

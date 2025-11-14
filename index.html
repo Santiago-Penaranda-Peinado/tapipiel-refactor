@@ -34,12 +34,17 @@
   <link rel="shortcut icon" type="image/png" href="/src/assets/images/logo/logotapipiel.png">
   <link rel="apple-touch-icon" href="/src/assets/images/logo/logotapipiel.png">
   
+  <!-- Preconnect para mejor performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts - Carga asíncrona para eliminar bloqueo de renderización -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap"></noscript>
+  
+  <!-- Font Awesome - Carga asíncrona para eliminar bloqueo de renderización -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
   <!-- Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -224,7 +229,7 @@
     <!-- HERO SLIDER -->
     <section id="inicio" class="hero-slider">
       <!-- Slide 1: 50 Años de Experiencia -->
-      <div class="hero-slide active" data-bg="src/assets/images/hero/slide-1.jpg">
+      <div class="hero-slide active" data-bg="src/assets/images/hero/slide-1.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -239,7 +244,7 @@
       </div>
       
       <!-- Slide 2: Tapicería Profesional -->
-      <div class="hero-slide" data-bg="src/assets/images/hero/slide-2.jpg">
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-2.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -254,7 +259,7 @@
       </div>
       
       <!-- Slide 3: Limpieza Especializada -->
-      <div class="hero-slide" data-bg="src/assets/images/hero/slide-3.jpg">
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-3.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -269,7 +274,7 @@
       </div>
       
       <!-- Slide 4: Restauración de Muebles Clásicos -->
-      <div class="hero-slide" data-bg="src/assets/images/hero/slide-4.jpg">
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-4.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -354,7 +359,7 @@
             <div class="about-visual">
                 <div class="image-container">
                 <!-- Imagen principal del taller -->
-                <div class="main-image" style="background-image: url('/src/assets/images/about/taller.jpg')">
+                <div class="main-image" style="background-image: url('/src/assets/images/about/taller.webp')">
                     <div class="image-overlay"></div>
                 </div>
                 
@@ -422,7 +427,7 @@
             </div>
 
             <!-- CTA final -->
-            <div class="about-cta" data-bg="/src/assets/images/about/cta-bg.jpg">
+            <div class="about-cta" data-bg="/src/assets/images/about/cta-bg.webp">
                 <div class="cta-overlay"></div>
                 <div class="cta-content">
                     <h3>¿Listo para darle nueva vida a sus muebles?</h3>
@@ -453,7 +458,7 @@
             <!-- Servicio Residencial -->
             <article class="service-card-enhanced">
                 <div class="service-visual">
-                <img src="/src/assets/images/services/residencial.jpg" alt="Tapicería residencial - Salas y muebles de hogar" class="service-image">
+                <img src="/src/assets/images/services/residencial.webp" alt="Tapicería residencial - Salas y muebles de hogar" class="service-image">
                 <div class="service-badge">Hogar</div>
                 </div>
                 
@@ -508,7 +513,7 @@
             <!-- Servicio Oficina -->
             <article class="service-card-enhanced">
                 <div class="service-visual">
-                <img src="/src/assets/images/services/oficina.jpg" alt="Muebles de oficina - Sillas ejecutivas y secretariales" class="service-image">
+                <img src="/src/assets/images/services/oficina.webp" alt="Muebles de oficina - Sillas ejecutivas y secretariales" class="service-image">
                 <div class="service-badge">Empresas</div>
                 </div>
                 
@@ -563,7 +568,7 @@
             <!-- Servicio Restauración -->
             <article class="service-card-enhanced">
                 <div class="service-visual">
-                <img src="/src/assets/images/services/restauracion.jpg" alt="Restauración de muebles - Piezas clásicas y vintage" class="service-image">
+                <img src="/src/assets/images/services/restauracion.webp" alt="Restauración de muebles - Piezas clásicas y vintage" class="service-image">
                 <div class="service-badge">Especialidad</div>
                 </div>
                 
@@ -732,7 +737,7 @@
                 <!-- Piel -->
                 <article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/piel.jpg" alt="Cuero genuino de primera calidad" class="material-image">
+                        <img src="/src/assets/images/materials/piel.webp" alt="Cuero genuino de primera calidad" class="material-image">
                         <div class="material-overlay">
                             <div class="material-badge">Premium</div>
                             <button class="material-zoom">
@@ -759,7 +764,7 @@
                 <!-- Vinipiel -->
                 <article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/vinipiel.jpg" alt="Vinipiel de alta calidad" class="material-image">
+                        <img src="/src/assets/images/materials/vinipiel.webp" alt="Vinipiel de alta calidad" class="material-image">
                         <div class="material-overlay">
                             <div class="material-badge">Popular</div>
                             <button class="material-zoom">
@@ -786,7 +791,7 @@
                 <!-- Tela -->
                 <article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/tela.jpg" alt="Telas premium y personalizadas" class="material-image">
+                        <img src="/src/assets/images/materials/tela.webp" alt="Telas premium y personalizadas" class="material-image">
                         <div class="material-overlay">
                             <div class="material-badge">Variedad</div>
                             <button class="material-zoom">
@@ -813,7 +818,7 @@
                 <!-- Piel Durazno -->
                 <!--<article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/durazno.jpg" alt="Piel durazno texturizada" class="material-image">
+                        <img src="/src/assets/images/materials/durazno.webp" alt="Piel durazno texturizada" class="material-image">
                         <div class="material-overlay">
                             <div class="material-badge">Exclusivo</div>
                             <button class="material-zoom">
@@ -840,7 +845,7 @@
                 <!-- Gamuza -->
                 <!--<article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/gamuza.jpg" alt="Gamuza natural y sintética" class="material-image">
+                        <img src="/src/assets/images/materials/gamuza.webp" alt="Gamuza natural y sintética" class="material-image">
                         <div class="material-overlay">
                             <div class="material-badge">Lujo</div>
                             <button class="material-zoom">
@@ -867,7 +872,7 @@
                 <!-- Más materiales -->
                 <!--<article class="material-card featured">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/varios.jpg" alt="Variedad de materiales adicionales" class="material-image">
+                        <img src="/src/assets/images/materials/varios.webp" alt="Variedad de materiales adicionales" class="material-image">
                         <div class="material-overlay">
                             <div class="material-badge">Variedad</div>
                         </div>

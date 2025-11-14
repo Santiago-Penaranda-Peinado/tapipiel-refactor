@@ -10,17 +10,17 @@
 // ============================================
 
 // Importar imágenes del slider para que Vite las incluya en el build
-import slide1 from '@assets/images/hero/slide-1.jpg';
-import slide2 from '@assets/images/hero/slide-2.jpg';
-import slide3 from '@assets/images/hero/slide-3.jpg';
-import slide4 from '@assets/images/hero/slide-4.jpg';
+import slide1 from '@assets/images/hero/slide-1.webp';
+import slide2 from '@assets/images/hero/slide-2.webp';
+import slide3 from '@assets/images/hero/slide-3.webp';
+import slide4 from '@assets/images/hero/slide-4.webp';
 
 // Mapeo de imágenes
 const slideImages = {
-  'src/assets/images/hero/slide-1.jpg': slide1,
-  'src/assets/images/hero/slide-2.jpg': slide2,
-  'src/assets/images/hero/slide-3.jpg': slide3,
-  'src/assets/images/hero/slide-4.jpg': slide4,
+  'src/assets/images/hero/slide-1.webp': slide1,
+  'src/assets/images/hero/slide-2.webp': slide2,
+  'src/assets/images/hero/slide-3.webp': slide3,
+  'src/assets/images/hero/slide-4.webp': slide4,
 };
 
 /**
