@@ -14,13 +14,25 @@ import slide1 from '@assets/images/hero/slide-1.webp';
 import slide2 from '@assets/images/hero/slide-2.webp';
 import slide3 from '@assets/images/hero/slide-3.webp';
 import slide4 from '@assets/images/hero/slide-4.webp';
+import slide1Mobile from '@assets/images/hero/slide-1-mb.webp';
+import slide2Mobile from '@assets/images/hero/slide-2-mb.webp';
+import slide3Mobile from '@assets/images/hero/slide-3-mb.webp';
+import slide4Mobile from '@assets/images/hero/slide-4-mb.webp';
 
-// Mapeo de imágenes
+// Mapeo de imágenes desktop
 const slideImages = {
   'src/assets/images/hero/slide-1.webp': slide1,
   'src/assets/images/hero/slide-2.webp': slide2,
   'src/assets/images/hero/slide-3.webp': slide3,
   'src/assets/images/hero/slide-4.webp': slide4,
+};
+
+// Mapeo de imágenes mobile
+const slideImagesMobile = {
+  'src/assets/images/hero/slide-1-mb.webp': slide1Mobile,
+  'src/assets/images/hero/slide-2-mb.webp': slide2Mobile,
+  'src/assets/images/hero/slide-3-mb.webp': slide3Mobile,
+  'src/assets/images/hero/slide-4-mb.webp': slide4Mobile,
 };
 
 /**
@@ -189,22 +201,85 @@ export function initHeroSlider() {
   });
   
   // ==========================================
+  // NAVEGACIÓN CON GESTOS TÁCTILES (TOUCH/SWIPE)
+  // ==========================================
+  
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+  const SWIPE_THRESHOLD = 50; // Mínima distancia para considerar un swipe (px)
+  
+  /**
+   * Maneja el inicio del touch
+   */
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+  
+  /**
+   * Maneja el final del touch y detecta la dirección del swipe
+   */
+  slider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+  
+  /**
+   * Determina la dirección del swipe y ejecuta la acción correspondiente
+   */
+  function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    
+    // Verificar si es un movimiento horizontal significativo
+    // y que no sea principalmente vertical (scroll)
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) {
+        // Swipe hacia la derecha - ir al slide anterior
+        prevSlide();
+        resetAutoplay();
+      } else {
+        // Swipe hacia la izquierda - ir al siguiente slide
+        nextSlide();
+        resetAutoplay();
+      }
+    }
+  }
+  
+  // ==========================================
   // APLICAR IMÁGENES DE FONDO
   // ==========================================
   
   /**
    * Aplica las imágenes de fondo desde el atributo data-bg
    * Usa las imágenes importadas para producción
+   * Aplica versión mobile en viewports pequeños
    */
   function applyBackgroundImages() {
+    const isMobile = window.innerWidth <= 768;
+    
     slides.forEach(slide => {
       const bgImage = slide.getAttribute('data-bg');
+      const bgImageMobile = slide.getAttribute('data-bg-mobile');
+      
       if (bgImage) {
-        // Usar la imagen importada si existe, sino usar la ruta directa
-        const imagePath = slideImages[bgImage] || bgImage;
+        // Usar imagen mobile si está disponible y estamos en viewport pequeño
+        const imageKey = isMobile && bgImageMobile ? bgImageMobile : bgImage;
+        const imageMap = isMobile && bgImageMobile ? slideImagesMobile : slideImages;
+        const imagePath = imageMap[imageKey] || imageKey;
         slide.style.backgroundImage = `url('${imagePath}')`;
       }
     });
+  }
+  
+  /**
+   * Actualiza las imágenes de fondo al redimensionar la ventana
+   */
+  function handleResize() {
+    applyBackgroundImages();
   }
   
   // ==========================================
@@ -219,6 +294,13 @@ export function initHeroSlider() {
   
   // Iniciar autoplay
   startAutoplay();
+  
+  // Escuchar cambios de tamaño de ventana para actualizar imágenes
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResize, 250);
+  });
   
   // Log de inicialización
   console.log(`Hero slider inicializado con ${slides.length} slides (${AUTOPLAY_DELAY / 1000}s autoplay)`);

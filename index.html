@@ -46,8 +46,7 @@
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
-  <!-- Google reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Google reCAPTCHA - Se carga dinámicamente al acercarse al formulario -->
   
   <!-- Structured Data / JSON-LD -->
   <script type="application/ld+json">
@@ -229,7 +228,7 @@
     <!-- HERO SLIDER -->
     <section id="inicio" class="hero-slider">
       <!-- Slide 1: 50 Años de Experiencia -->
-      <div class="hero-slide active" data-bg="src/assets/images/hero/slide-1.webp">
+      <div class="hero-slide active" data-bg="src/assets/images/hero/slide-1.webp" data-bg-mobile="src/assets/images/hero/slide-1-mb.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -244,7 +243,7 @@
       </div>
       
       <!-- Slide 2: Tapicería Profesional -->
-      <div class="hero-slide" data-bg="src/assets/images/hero/slide-2.webp">
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-2.webp" data-bg-mobile="src/assets/images/hero/slide-2-mb.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -259,7 +258,7 @@
       </div>
       
       <!-- Slide 3: Limpieza Especializada -->
-      <div class="hero-slide" data-bg="src/assets/images/hero/slide-3.webp">
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-3.webp" data-bg-mobile="src/assets/images/hero/slide-3-mb.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -274,7 +273,7 @@
       </div>
       
       <!-- Slide 4: Restauración de Muebles Clásicos -->
-      <div class="hero-slide" data-bg="src/assets/images/hero/slide-4.webp">
+      <div class="hero-slide" data-bg="src/assets/images/hero/slide-4.webp" data-bg-mobile="src/assets/images/hero/slide-4-mb.webp">
         <div class="hero-overlay"></div>
         <div class="container">
           <div class="hero-content">
@@ -359,7 +358,7 @@
             <div class="about-visual">
                 <div class="image-container">
                 <!-- Imagen principal del taller -->
-                <div class="main-image" style="background-image: url('/src/assets/images/about/taller.webp')">
+                <div class="main-image" data-bg="/src/assets/images/about/taller.webp" data-bg-mobile="/src/assets/images/about/taller-mb.webp">
                     <div class="image-overlay"></div>
                 </div>
                 
@@ -427,7 +426,7 @@
             </div>
 
             <!-- CTA final -->
-            <div class="about-cta" data-bg="/src/assets/images/about/cta-bg.webp">
+            <div class="about-cta" data-bg="/src/assets/images/about/cta-bg.webp" data-bg-mobile="/src/assets/images/about/cta-bg-mb.webp">
                 <div class="cta-overlay"></div>
                 <div class="cta-content">
                     <h3>¿Listo para darle nueva vida a sus muebles?</h3>
@@ -458,7 +457,10 @@
             <!-- Servicio Residencial -->
             <article class="service-card-enhanced">
                 <div class="service-visual">
-                <img src="/src/assets/images/services/residencial.webp" alt="Tapicería residencial - Salas y muebles de hogar" class="service-image">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="/src/assets/images/services/residencial-mb.webp">
+                  <img src="/src/assets/images/services/residencial.webp" alt="Tapicería residencial - Salas y muebles de hogar" class="service-image">
+                </picture>
                 <div class="service-badge">Hogar</div>
                 </div>
                 
@@ -513,7 +515,10 @@
             <!-- Servicio Oficina -->
             <article class="service-card-enhanced">
                 <div class="service-visual">
-                <img src="/src/assets/images/services/oficina.webp" alt="Muebles de oficina - Sillas ejecutivas y secretariales" class="service-image">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="/src/assets/images/services/oficina-mb.webp">
+                  <img src="/src/assets/images/services/oficina.webp" alt="Muebles de oficina - Sillas ejecutivas y secretariales" class="service-image">
+                </picture>
                 <div class="service-badge">Empresas</div>
                 </div>
                 
@@ -568,7 +573,10 @@
             <!-- Servicio Restauración -->
             <article class="service-card-enhanced">
                 <div class="service-visual">
-                <img src="/src/assets/images/services/restauracion.webp" alt="Restauración de muebles - Piezas clásicas y vintage" class="service-image">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="/src/assets/images/services/restauracion-mb.webp">
+                  <img src="/src/assets/images/services/restauracion.webp" alt="Restauración de muebles - Piezas clásicas y vintage" class="service-image">
+                </picture>
                 <div class="service-badge">Especialidad</div>
                 </div>
                 
@@ -737,7 +745,10 @@
                 <!-- Piel -->
                 <article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/piel.webp" alt="Cuero genuino de primera calidad" class="material-image">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="/src/assets/images/materials/piel-mb.webp">
+                          <img src="/src/assets/images/materials/piel.webp" alt="Cuero genuino de primera calidad" class="material-image">
+                        </picture>
                         <div class="material-overlay">
                             <div class="material-badge">Premium</div>
                             <button class="material-zoom">
@@ -764,7 +775,10 @@
                 <!-- Vinipiel -->
                 <article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/vinipiel.webp" alt="Vinipiel de alta calidad" class="material-image">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="/src/assets/images/materials/vinipiel-mb.webp">
+                          <img src="/src/assets/images/materials/vinipiel.webp" alt="Vinipiel de alta calidad" class="material-image">
+                        </picture>
                         <div class="material-overlay">
                             <div class="material-badge">Popular</div>
                             <button class="material-zoom">
@@ -791,7 +805,10 @@
                 <!-- Tela -->
                 <article class="material-card">
                     <div class="material-visual">
-                        <img src="/src/assets/images/materials/tela.webp" alt="Telas premium y personalizadas" class="material-image">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="/src/assets/images/materials/tela-mb.webp">
+                          <img src="/src/assets/images/materials/tela.webp" alt="Telas premium y personalizadas" class="material-image">
+                        </picture>
                         <div class="material-overlay">
                             <div class="material-badge">Variedad</div>
                             <button class="material-zoom">

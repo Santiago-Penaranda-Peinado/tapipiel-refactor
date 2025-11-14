@@ -5,9 +5,62 @@
 // evitando recarga y mostrando errores en alertas
 // ============================================
 
+// Variable para controlar si reCAPTCHA ya fue cargado
+let recaptchaLoaded = false;
+
+/**
+ * Carga el script de reCAPTCHA dinámicamente
+ */
+function loadRecaptcha() {
+  return new Promise((resolve, reject) => {
+    if (recaptchaLoaded) {
+      resolve();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      recaptchaLoaded = true;
+      console.log('reCAPTCHA cargado exitosamente');
+      resolve();
+    };
+    script.onerror = () => reject(new Error('Error al cargar reCAPTCHA'));
+    document.head.appendChild(script);
+  });
+}
+
+/**
+ * Inicializa el observer para cargar reCAPTCHA cuando el usuario se acerca al formulario
+ */
+function initRecaptchaLazyLoad() {
+  const contactSection = document.getElementById('contacto');
+  if (!contactSection) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !recaptchaLoaded) {
+        loadRecaptcha().catch(err => {
+          console.error('Error al cargar reCAPTCHA:', err);
+        });
+        observer.disconnect(); // Desconectar después de cargar
+      }
+    });
+  }, {
+    rootMargin: '200px' // Cargar 200px antes de que sea visible
+  });
+
+  observer.observe(contactSection);
+}
+
 export function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
+
+  // Inicializar carga lazy de reCAPTCHA
+  initRecaptchaLazyLoad();
 
   const submitBtn = form.querySelector('button[type="submit"]');
 
