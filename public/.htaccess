@@ -1,0 +1,295 @@
+# ==============================================================================
+# .htaccess - Tapipiel Website
+# Configuración de Apache para optimización y seguridad
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Compresión GZIP
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  # Comprimir HTML, CSS, JavaScript, Text, XML y fuentes
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  
+  # Comprimir fuentes
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  
+  # Remover header de Accept-Encoding para navegadores antiguos
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Cache de Navegador (Leverage Browser Caching)
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Por defecto: 1 mes
+  ExpiresDefault "access plus 1 month"
+  
+  # HTML: 1 hora (para cambios frecuentes)
+  ExpiresByType text/html "access plus 1 hour"
+  
+  # CSS y JavaScript: 1 mes
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  
+  # Imágenes: 1 año
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  
+  # Fuentes: 1 año
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType application/x-font-opentype "access plus 1 year"
+  ExpiresByType application/x-font-truetype "access plus 1 year"
+  
+  # Archivos de datos: 1 mes
+  ExpiresByType application/json "access plus 1 month"
+  ExpiresByType application/xml "access plus 1 month"
+  ExpiresByType text/xml "access plus 1 month"
+  
+  # Feeds RSS: 1 hora
+  ExpiresByType application/rss+xml "access plus 1 hour"
+  
+  # Favicon: 1 año
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # PDF y documentos: 1 mes
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+# Si mod_expires no está disponible, usar mod_headers
+<IfModule !mod_expires.c>
+  <IfModule mod_headers.c>
+    # Imágenes y fuentes: 1 año
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf|eot)$">
+      Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+    
+    # CSS y JavaScript: 1 mes
+    <FilesMatch "\.(css|js)$">
+      Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    
+    # HTML: 1 hora
+    <FilesMatch "\.(html|htm)$">
+      Header set Cache-Control "max-age=3600, public"
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Headers de Seguridad
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Prevenir MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Protección contra clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+  
+  # Habilitar filtro XSS en navegadores antiguos
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Política de referrer
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Permissions Policy (antes Feature Policy)
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Content Security Policy (CSP) - Ajustar según necesidades
+  # Descomentado para evitar bloqueos, pero recomendado activar en producción
+  # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';"
+  
+  # Remover headers que exponen información del servidor
+  Header unset X-Powered-By
+  Header unset Server
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Forzar HTTPS (Recomendado - Descomentar cuando tengas SSL activo)
+# ------------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ------------------------------------------------------------------------------
+# Redirección www a no-www (Opcional - Descomentar si prefieres sin www)
+# ------------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTP_HOST} ^www\.tapipiel\.com\.mx [NC]
+#   RewriteRule ^(.*)$ https://tapipiel.com.mx/$1 [R=301,L]
+# </IfModule>
+
+# ------------------------------------------------------------------------------
+# O Redirección no-www a www (Opcional - Descomentar si prefieres con www)
+# ------------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTP_HOST} ^tapipiel\.com\.mx [NC]
+#   RewriteRule ^(.*)$ https://www.tapipiel.com.mx/$1 [R=301,L]
+# </IfModule>
+
+# ------------------------------------------------------------------------------
+# Páginas de Error Personalizadas (Opcional)
+# ------------------------------------------------------------------------------
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
+# ErrorDocument 503 /503.html
+
+# ------------------------------------------------------------------------------
+# Bloquear Acceso a Archivos Sensibles
+# ------------------------------------------------------------------------------
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+  # Apache 2.2
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+    Satisfy All
+  </IfModule>
+  
+  # Apache 2.4+
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+
+# Proteger .htaccess y .htpasswd
+<Files .htaccess>
+  # Apache 2.2
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+  
+  # Apache 2.4+
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</Files>
+
+<Files .htpasswd>
+  # Apache 2.2
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+  
+  # Apache 2.4+
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</Files>
+
+# ------------------------------------------------------------------------------
+# Deshabilitar Listado de Directorios
+# ------------------------------------------------------------------------------
+Options -Indexes
+
+# ------------------------------------------------------------------------------
+# Seguimiento del Servidor (ServerSignature)
+# ------------------------------------------------------------------------------
+ServerSignature Off
+
+# ------------------------------------------------------------------------------
+# Habilitar FollowSymLinks (Requerido por algunos CMS)
+# ------------------------------------------------------------------------------
+Options +FollowSymLinks
+
+# ------------------------------------------------------------------------------
+# Codificación UTF-8 por defecto
+# ------------------------------------------------------------------------------
+AddDefaultCharset utf-8
+<IfModule mod_mime.c>
+  AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Tipos MIME Adicionales
+# ------------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  # Fuentes
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType font/ttf .ttf
+  AddType font/otf .otf
+  AddType application/vnd.ms-fontobject .eot
+  
+  # Imágenes
+  AddType image/webp .webp
+  AddType image/svg+xml .svg .svgz
+  
+  # JavaScript
+  AddType application/javascript .js .mjs
+  AddType application/json .json
+  
+  # Video
+  AddType video/mp4 .mp4 .m4v
+  AddType video/webm .webm
+  
+  # Audio
+  AddType audio/mp4 .m4a .f4a .f4b
+  AddType audio/ogg .oga .ogg .opus
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Optimización de Performance
+# ------------------------------------------------------------------------------
+
+# ETags
+<IfModule mod_headers.c>
+  # Remover ETags (se usa Cache-Control en su lugar)
+  Header unset ETag
+</IfModule>
+FileETag None
+
+# ------------------------------------------------------------------------------
+# Hotlink Protection (Opcional - Proteger imágenes de uso externo)
+# ------------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTP_REFERER} !^$
+#   RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tapipiel\.com\.mx [NC]
+#   RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC,L]
+# </IfModule>
+
+# ==============================================================================
+# Fin de configuración
+# ==============================================================================
